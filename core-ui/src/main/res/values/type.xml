@@ -191,7 +191,7 @@
     <style name="TextAppearance.Pasha.BodyMedium.SemiBold" parent="TextAppearance.Pasha.BodyMedium">
         <item name="android:fontWeight">600</item>
         <item name="fontFamily">@font/inter_semi_bold</item>
-        <item name="android:letterSpacing">0.25</item>
+        <item name="android:letterSpacing">0</item>
     </style>
 
     <style name="TextAppearance.Pasha.BodyMedium.Bold" parent="TextAppearance.Pasha.BodyMedium.SemiBold">
@@ -232,7 +232,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">400</item>
-        <item name="android:letterSpacing">0.05</item>
+        <item name="android:letterSpacing">0.03</item>
         <item name="lineHeight">21sp</item>
     </style>
 
