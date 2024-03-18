@@ -211,6 +211,15 @@
         <item name="lineHeight">19sp</item>
     </style>
 
+    <style name="TextAppearance.Pasha.BodySmall.Regular" parent="TextAppearance.Pasha.BodySmall" />
+
+    <style name="TextAppearance.Pasha.BodySmall.SemiBold" parent="TextAppearance.Pasha.BodySmall">
+        <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+        <item name="android:fontWeight">600</item>
+        <item name="lineHeight">19sp</item>
+    </style>
+
     <!-- LINK -->
     <style name="TextAppearance.Pasha.LinkLarge" parent="TextAppearance.Pasha.BodyLarge">
         <item name="android:fontFamily">@font/inter_font</item>

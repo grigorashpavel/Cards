@@ -23,3 +23,4 @@ rootProject.name = "Cards"
 include(":app")
 include(":features:sign-in")
 include(":core-ui")
+include(":features:sign-up")
