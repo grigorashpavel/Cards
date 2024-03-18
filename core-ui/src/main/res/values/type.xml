@@ -2,127 +2,152 @@
 <resources>
 
     <!-- DISPLAY -->
-    <style name="DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+    <style name="TextAppearance.Pasha.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">57sp</item>
         <item name="android:fontWeight">700</item>
         <item name="android:letterSpacing">-0.25</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="lineHeight">64sp</item>
     </style>
 
-    <style name="DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+    <style name="TextAppearance.Pasha.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">45sp</item>
         <item name="android:fontWeight">700</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">52sp</item>
     </style>
 
-    <style name="DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+    <style name="TextAppearance.Pasha.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:fontWeight">700</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">43sp</item>
     </style>
 
     <!-- HEADLINE -->
-    <style name="HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+    <style name="TextAppearance.Pasha.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">39sp</item>
     </style>
 
-    <style name="HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+    <style name="TextAppearance.Pasha.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">28sp</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">35sp</item>
     </style>
 
-    <style name="HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+    <style name="TextAppearance.Pasha.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">31sp</item>
     </style>
 
     <!-- TITLE -->
-    <style name="TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+    <style name="TextAppearance.Pasha.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">29sp</item>
     </style>
 
-    <style name="TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+    <style name="TextAppearance.Pasha.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0.15</item>
         <item name="lineHeight">23sp</item>
     </style>
 
-    <style name="TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+    <style name="TextAppearance.Pasha.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:fontWeight">600</item>
         <item name="android:letterSpacing">0.1</item>
         <item name="lineHeight">21sp</item>
     </style>
 
     <!-- LABEL -->
-    <style name="LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+    <style name="TextAppearance.Pasha.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/inter_regular</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:letterSpacing">0.1</item>
         <item name="lineHeight">21sp</item>
     </style>
 
-    <style name="LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+    <style name="TextAppearance.Pasha.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontWeight">400</item>
         <item name="android:letterSpacing">0.5</item>
         <item name="lineHeight">19sp</item>
     </style>
 
-    <style name="LabelMedium.SemiBold" parent="LabelMedium">
+    <style name="TextAppearance.Pasha.LabelMedium.SemiBold" parent="TextAppearance.Pasha.LabelMedium">
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:fontWeight">600</item>
     </style>
 
-    <style name="LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+    <style name="TextAppearance.Pasha.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/inter_regular</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">11sp</item>
         <item name="android:fontWeight">400</item>
         <item name="android:letterSpacing">0</item>
@@ -130,71 +155,84 @@
     </style>
 
     <!-- BODY -->
-    <style name="BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+    <style name="TextAppearance.Pasha.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontWeight">400</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">23sp</item>
     </style>
 
-    <style name="BodyLarge.Regular" parent="BodyLarge" />
+    <style name="TextAppearance.Pasha.BodyLarge.Regular" parent="TextAppearance.Pasha.BodyLarge" />
 
-    <style name="BodyLarge.Bold" parent="BodyLarge">
+    <style name="TextAppearance.Pasha.BodyLarge.Bold" parent="TextAppearance.Pasha.BodyLarge">
+        <item name="fontFamily">@font/inter_bold</item>
         <item name="android:fontWeight">700</item>
     </style>
 
-    <style name="BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+    <style name="TextAppearance.Pasha.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">400</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">21sp</item>
     </style>
 
-    <style name="BodyMedium.Regular" parent="BodyMedium" />
+    <style name="TextAppearance.Pasha.BodyMedium.Regular" parent="TextAppearance.Pasha.BodyMedium" />
 
-    <style name="BodyMedium.SemiBold" parent="BodyMedium">
+    <style name="TextAppearance.Pasha.BodyMedium.SemiBold" parent="TextAppearance.Pasha.BodyMedium">
         <item name="android:fontWeight">600</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
         <item name="android:letterSpacing">0.25</item>
     </style>
 
-    <style name="BodyMedium.Bold" parent="BodyMedium.SemiBold">
+    <style name="TextAppearance.Pasha.BodyMedium.Bold" parent="TextAppearance.Pasha.BodyMedium.SemiBold">
         <item name="android:fontWeight">700</item>
+        <item name="fontFamily">@font/inter_bold</item>
     </style>
 
-    <style name="BodySmall" parent="TextAppearance.Material3.BodySmall">
+    <style name="TextAppearance.Pasha.BodySmall" parent="TextAppearance.Material3.BodySmall">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/primary_900</item>
+        <item name="fontFamily">@font/inter_regular</item>
         <item name="android:fontWeight">400</item>
         <item name="android:letterSpacing">0</item>
         <item name="lineHeight">19sp</item>
     </style>
 
     <!-- LINK -->
-    <style name="LinkLarge" parent="BodyLarge">
+    <style name="TextAppearance.Pasha.LinkLarge" parent="TextAppearance.Pasha.BodyLarge">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary_900</item>
+        <item name="fontFamily">@font/inter_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontWeight">400</item>
-        <item name="android:letterSpacing">0.25</item>
+        <item name="android:letterSpacing">0.05</item>
         <item name="lineHeight">23sp</item>
     </style>
 
-    <style name="LinkMedium" parent="BodyMedium">
+    <style name="TextAppearance.Pasha.LinkMedium" parent="TextAppearance.Pasha.BodyMedium">
         <item name="android:fontFamily">@font/inter_font</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/primary_900</item>
+        <item name="fontFamily">@font/inter_regular</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">400</item>
-        <item name="android:letterSpacing">0.25</item>
+        <item name="android:letterSpacing">0.05</item>
         <item name="lineHeight">21sp</item>
     </style>
 

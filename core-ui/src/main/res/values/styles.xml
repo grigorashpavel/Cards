@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.Cards.Button.TextButton" parent="Widget.Material3.Button.TextButton">
+    <style name="Widget.Pasha.Button.TextButton" parent="Widget.Material3.Button.TextButton">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
         <item name="android:paddingTop">8dp</item>
@@ -12,12 +12,12 @@
 
     </style>
 
-    <style name="EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Widget.Pasha.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/EditTextShape</item>
         <item name="android:minHeight">64dip</item>
     </style>
 
-    <style name="FilledButton" parent="Widget.Material3.Button">
+    <style name="Widget.Pasha.Button" parent="Widget.Material3.Button">
         <item name="android:minHeight">64dip</item>
         <item name="android:textStyle">normal</item>
 

@@ -36,6 +36,4 @@
         android:font="@font/inter_black"
         android:fontStyle="normal"
         android:fontWeight="900" />
-
-
 </font-family>
