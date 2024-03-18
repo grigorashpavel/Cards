@@ -20,6 +20,6 @@
     <style name="Widget.Pasha.Button" parent="Widget.Material3.Button">
         <item name="android:minHeight">64dip</item>
         <item name="android:textStyle">normal</item>
-
+        <item name="android:textAppearance">@style/TextAppearance.Pasha.BodyMedium.SemiBold</item>
     </style>
 </resources>
