@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Widget.Pasha.Button.TextButton" parent="Widget.Material3.Button.TextButton">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
@@ -15,6 +16,10 @@
     <style name="Widget.Pasha.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/EditTextShape</item>
         <item name="android:minHeight">64dip</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/pasha_textfields_stroke_color</item>
+        <item name="endIconTint">@color/primary_500</item>
+        <item name="android:textColorHint">@color/primary_500</item>
     </style>
 
     <style name="Widget.Pasha.Button" parent="Widget.Material3.Button">
