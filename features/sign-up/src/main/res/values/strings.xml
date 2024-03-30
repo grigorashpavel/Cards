@@ -2,8 +2,7 @@
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="confirm_your_mail">Confirm your mail</string>
+    <string name="confirm_your_phone">Confirm your phone</string>
     <string name="we_have_sent_you_a_confirmation_code">We have sent you a confirmation code</string>
     <string name="code">Code</string>
     <string name="send_code">Send code</string>
