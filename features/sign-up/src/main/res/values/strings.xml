@@ -13,4 +13,13 @@
     <string name="skip"><u>skip</u></string>
     <string name="the_confirmation_but_then"> the confirmation, but then</string>
     <string name="your_cards_will_be_limited">your Cards will be limited</string>
+    <string name="set_up_your_cards_account">Set up your Cards account</string>
+    <string name="terms_and_conditions"> <a href="https://yandex.ru">Terms and conditions</a></string>
+
+    <string name="body_footer_condition_and_terms">
+        By creating an account, you accept our\n
+        <b><a href="https://www.yandex.ru/">Terms and Conditions</a></b>
+        you read our
+        <b><a href="https://www.yandex.ru/">Privacy Policy</a></b>
+    </string>
 </resources>

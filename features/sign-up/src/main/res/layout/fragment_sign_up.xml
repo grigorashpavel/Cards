@@ -5,55 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_100"
+    android:paddingHorizontal="16dp"
     tools:context=".SignUpFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/glAuthBlock"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_logo"
+        android:tint="@color/primary_700"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/tvAppName"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="spread" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/inter_extra_bold"
+        android:gravity="center"
+        android:letterSpacing="-0.05"
+        android:text="@string/app_name"
+        android:textColor="@color/primary_700"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivLogo"
+        app:layout_constraintTop_toTopOf="@id/ivLogo"
+        app:lineHeight="16sp" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_logo"
-                android:tint="@color/primary_700" />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/set_up_your_cards_account"
+        android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
+        android:textColor="@color/primary_600"
+        app:layout_constraintEnd_toEndOf="@id/tvAppName"
+        app:layout_constraintStart_toStartOf="@id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/inter_extra_bold"
-                android:gravity="center"
-                android:letterSpacing="-0.05"
-                android:text="@string/app_name"
-                android:textColor="@color/primary_700"
-                android:textSize="32sp"
-                app:lineHeight="16sp" />
-        </LinearLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:text="Set up your Cards account"
-            android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
-            android:textColor="@color/primary_600" />
-
-    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glAuthBlock"
@@ -62,174 +60,144 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailFieldLayout"
+        style="@style/Widget.Pasha.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/glAuthBlock">
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:hint="Phone"
+            android:inputType="phone|textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Pasha.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Email or Phone"
-                    android:inputType="phone|textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Pasha.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:endIconMode="password_toggle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Password"
-                    android:inputType="textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Pasha.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sign Up" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="32dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_500" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:text="Or better yet..."
-                android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
-                android:textColor="@color/primary_500" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/primary_500" />
-
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Pasha.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Continue with Google"
-            android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.SemiBold"
-            app:icon="@drawable/ic_google_logo"
-            app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:iconSize="16dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/footer"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordFieldLayout"
+        style="@style/Widget.Pasha.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="@id/emailFieldLayout"
+        app:layout_constraintStart_toStartOf="@id/emailFieldLayout"
+        app:layout_constraintTop_toBottomOf="@id/emailFieldLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignUp"
+        style="@style/Widget.Pasha.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sign Up"
+        app:layout_constraintEnd_toEndOf="@id/passwordFieldLayout"
+        app:layout_constraintStart_toStartOf="@id/passwordFieldLayout"
+        app:layout_constraintTop_toBottomOf="@id/passwordFieldLayout" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dLine1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/primary_500"
+        app:dividerThickness="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvBodyBetterYet"
+        app:layout_constraintEnd_toStartOf="@id/tvBodyBetterYet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvBodyBetterYet" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBodyBetterYet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="42dp"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:text="Or better yet..."
+        android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
+        android:textColor="@color/primary_500"
+        app:layout_constraintEnd_toStartOf="@id/dLine2"
+        app:layout_constraintStart_toEndOf="@id/dLine1"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dLine2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/primary_500"
+        app:dividerThickness="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvBodyBetterYet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBodyBetterYet"
+        app:layout_constraintTop_toTopOf="@id/tvBodyBetterYet" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleContinue"
+        style="@style/Widget.Pasha.Button.OutlinedButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Continue with Yandex ID"
+        android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.SemiBold"
+        app:icon="@drawable/ic_yandex_id"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@id/dLine2"
+        app:layout_constraintStart_toStartOf="@id/dLine1"
+        app:layout_constraintTop_toBottomOf="@id/tvBodyBetterYet" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBodyAlreadyHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account?"
+        android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
+        app:layout_constraintBottom_toBottomOf="@id/btnLogin"
+        app:layout_constraintEnd_toStartOf="@id/btnLogin"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/btnGoogleContinue"
+        app:layout_constraintTop_toTopOf="@id/btnLogin" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        style="@style/Widget.Pasha.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.Pasha.LinkMedium"
+        app:layout_constraintEnd_toEndOf="@id/btnGoogleContinue"
+        app:layout_constraintStart_toEndOf="@id/tvBodyAlreadyHaveAccount"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogleContinue" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:text="@string/body_footer_condition_and_terms"
+        android:textAppearance="@style/TextAppearance.Pasha.BodySmall.Regular"
+        android:textColor="@color/primary_600"
+        android:textColorLink="@color/primary_800"
+        android:textColorHighlight="@color/primary_300"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Already have an account?"
-                android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Regular"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Pasha.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textAppearance="@style/TextAppearance.Pasha.LinkMedium" />
-        </LinearLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="By creating an account, you accept our"
-            android:textAppearance="@style/TextAppearance.Pasha.BodySmall.Regular"
-            android:textColor="@color/primary_600" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Pasha.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="0dp"
-                android:paddingVertical="0dp"
-                android:text="Terms and conditions"
-                android:textAppearance="@style/TextAppearance.Pasha.BodySmall.SemiBold"
-                android:textColor="@color/primary_900" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" you read our "
-                android:textAppearance="@style/TextAppearance.Pasha.BodySmall.Regular"
-                android:textColor="@color/primary_600" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Pasha.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="0dp"
-                android:paddingVertical="0dp"
-                android:text="Privacy Policy"
-                android:textAppearance="@style/TextAppearance.Pasha.BodySmall.SemiBold" />
-
-
-        </LinearLayout>
-
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
