@@ -10,7 +10,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:minHeight">0dip</item>
         <item name="android:minWidth">0dip</item>
-
+        <item name="android:textColor">@color/primary_900</item>
     </style>
 
     <style name="Widget.Pasha.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -18,11 +18,13 @@
         <item name="android:minHeight">64dip</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeColor">@color/pasha_textfields_stroke_color</item>
-        <item name="endIconTint">@color/primary_500</item>
         <item name="android:textColorHint">@color/primary_500</item>
+        <item name="hintTextColor">@color/primary_500</item>
+        <item name="endIconTint">@color/primary_500</item>
     </style>
 
     <style name="Widget.Pasha.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_900</item>
         <item name="android:minHeight">64dip</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAppearance">@style/TextAppearance.Pasha.BodyMedium.SemiBold</item>
@@ -30,6 +32,9 @@
 
     <style name="Widget.Pasha.Button.OutlinedButton.Icon" parent="Widget.Material3.Button.OutlinedButton.Icon">
         <item name="minHeight">64dip</item>
+        <item name="iconSize">50dp</item>
+        <item name="iconTint">@color/primary_900</item>
+        <item name="android:textColor">@color/primary_900</item>
         <item name="android:minHeight">64dip</item>
         <item name="strokeColor">@color/primary_500</item>
         <item name="android:strokeColor">@color/primary_500</item>
