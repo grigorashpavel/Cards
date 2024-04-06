@@ -14,9 +14,9 @@
     </style>
 
     <style name="Widget.Pasha.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="shapeAppearance">@style/EditTextShape</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Pasha.SmallComponent</item>
         <item name="android:minHeight">64dip</item>
-        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxBackgroundColor">@color/primary_0</item>
         <item name="boxStrokeColor">@color/pasha_textfields_stroke_color</item>
         <item name="android:textColorHint">@color/primary_500</item>
         <item name="hintTextColor">@color/primary_500</item>
@@ -27,6 +27,7 @@
         <item name="backgroundTint">@color/primary_900</item>
         <item name="android:minHeight">64dip</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/primary_50</item>
         <item name="android:textAppearance">@style/TextAppearance.Pasha.BodyMedium.SemiBold</item>
     </style>
 
@@ -38,5 +39,24 @@
         <item name="android:minHeight">64dip</item>
         <item name="strokeColor">@color/primary_500</item>
         <item name="android:strokeColor">@color/primary_500</item>
+    </style>
+
+    <style name="Widget.Pasha.SearchBar" parent="Widget.Material3.SearchBar">
+        <item name="navigationIconTint">@color/primary_500</item>
+        <item name="backgroundTint">@color/primary_0</item>
+        <item name="android:textAppearance">@style/TextAppearance.Pasha.SearchBar</item>
+    </style>
+    <style name="TextAppearance.Pasha.SearchBar" parent="TextAppearance.Material3.SearchBar">
+        <item name="android:textColorHint">@color/primary_500</item>
+    </style>
+
+
+    <style name="Widget.Pasha.SearchView" parent="Widget.Material3.SearchView">
+        <item name="backgroundTint">@color/primary_0</item>
+        <item name="android:iconTint">@color/primary_500</item>
+        <item name="navigationIconTint">@color/primary_500</item>
+        <item name="android:tint">@color/primary_500</item>
+        <item name="tint">@color/primary_500</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.SearchView</item>
     </style>
 </resources>

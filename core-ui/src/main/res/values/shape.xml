@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="EditTextShape" parent="ShapeAppearance.Material3.SmallComponent">
+    <style name="ShapeAppearance.Pasha.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerSize">8dp</item>
+    </style>
+    
+    <style name="Circular">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.Pasha.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">12dp</item>
     </style>
 </resources>
