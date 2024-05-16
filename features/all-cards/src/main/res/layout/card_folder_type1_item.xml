@@ -46,7 +46,7 @@
             android:layout_height="48dp"
             android:background="@color/primary_200"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_empty_image_folder"
+            android:src="@drawable/ic_empty_resource_image_20"
             android:tint="@color/primary_300"
             app:layout_constraintBottom_toTopOf="@id/tvFolderName"
             app:layout_constraintEnd_toEndOf="parent"

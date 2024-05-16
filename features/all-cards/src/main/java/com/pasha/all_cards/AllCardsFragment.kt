@@ -36,7 +36,12 @@ class AllCardsFragment : Fragment() {
         setupSearchView()
     }
 
-//    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    //    override fun onSaveInstanceState(outState: Bundle) {
 //        super.onSaveInstanceState(outState)
 //        val query = if (binding.searchView.isShown) binding.searchView.text
 //        else binding.searchBar.text
