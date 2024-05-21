@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_100"
     android:paddingHorizontal="16dp"
-    tools:context=".SignUpFragment">
+    tools:context=".internal.presentation.SignUpFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivLogo"
@@ -71,10 +71,11 @@
         app:layout_constraintTop_toBottomOf="@id/glAuthBlock">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Phone"
-            android:inputType="phone|textEmailAddress" />
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -90,9 +91,10 @@
         app:layout_constraintTop_toBottomOf="@id/emailFieldLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Login"
-        android:textAppearance="@style/TextAppearance.Pasha.LinkMedium"
+        android:textAppearance="@style/TextAppearance.Pasha.BodyMedium.Bold"
         app:layout_constraintEnd_toEndOf="@id/btnGoogleContinue"
         app:layout_constraintStart_toEndOf="@id/tvBodyAlreadyHaveAccount"
         app:layout_constraintTop_toBottomOf="@id/btnGoogleContinue" />
@@ -193,8 +195,8 @@
         android:text="@string/body_footer_condition_and_terms"
         android:textAppearance="@style/TextAppearance.Pasha.BodySmall.Regular"
         android:textColor="@color/primary_600"
-        android:textColorLink="@color/primary_800"
         android:textColorHighlight="@color/primary_300"
+        android:textColorLink="@color/primary_800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

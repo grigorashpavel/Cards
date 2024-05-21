@@ -1,4 +1,4 @@
-package com.pasha.core.dagger.api
+package com.pasha.core.di
 
 
 typealias DepsMap = Map<Class<out Dependencies>, @JvmSuppressWildcards Dependencies>

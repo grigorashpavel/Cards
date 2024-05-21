@@ -1,15 +1,13 @@
 <resources>
     <string name="welcome_back">Welcome Back</string>
     <string name="login_in_to_your_cards_account">Log in to your Cards Account</string>
-    <string name="email_or_phone">Email or Phone</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
     <string name="skip">Skip</string>
     <string name="dont_have_an_account">Don`t have an account?</string>
     <string name="sign_up"><u>Sign Up</u></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="confirm_your_phone">Confirm your phone</string>
     <string name="we_have_sent_you_a_confirmation_code">We have sent you a confirmation code</string>

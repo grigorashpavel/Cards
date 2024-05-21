@@ -1,4 +1,4 @@
-package com.pasha.core.dagger.api
+package com.pasha.core.di
 
 import android.app.Activity
 import android.app.Application

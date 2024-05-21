@@ -46,6 +46,7 @@
         <item name="backgroundTint">@color/primary_0</item>
         <item name="android:textAppearance">@style/TextAppearance.Pasha.SearchBar</item>
     </style>
+
     <style name="TextAppearance.Pasha.SearchBar" parent="TextAppearance.Material3.SearchBar">
         <item name="android:textColorHint">@color/primary_500</item>
     </style>
@@ -58,5 +59,22 @@
         <item name="android:tint">@color/primary_500</item>
         <item name="tint">@color/primary_500</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.SearchView</item>
+    </style>
+
+    <style name="Widget.Pasha.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primary_300</item>
+    </style>
+
+    <style name="Widget.Pasha.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/primary_100</item>
+        <item name="elevation">0dp</item>
+        <item name="itemIconTint">@color/pasha_navigation_bar_item_with_indicator_icon_tint</item>
+        <item name="itemRippleColor">@color/pasha_navigation_bar_ripple_color_selector</item>
+        <item name="itemActiveIndicatorStyle">
+            @style/Widget.Pasha.BottomNavigationView.ActiveIndicator
+        </item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.Pasha.TitleSmall</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.Pasha.TitleSmall</item>
+        <item name="itemTextColor">@color/pasha_navigation_bar_item_with_indicator_label_tint</item>
     </style>
 </resources>

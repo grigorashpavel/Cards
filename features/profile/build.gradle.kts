@@ -37,6 +37,10 @@ android {
 }
 
 dependencies {
+    // Navigation
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+
     implementation(project(":core-ui"))
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.coordinatorlayout)

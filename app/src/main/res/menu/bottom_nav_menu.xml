@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/all_cards_feature_nested_graph"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Cards" />
+    <item
+        android:id="@+id/f"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Cloud" />
+
+    <item
+        android:id="@+id/profile_feature_nested_graph"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Profile" />
+
+</menu>

@@ -44,7 +44,7 @@ dependencies {
     // Datastore = Preferences
     implementation(libs.androidx.datastore.preferences)
 
-    // Dagger-Hilt = Major + Compiler
+    // Dagger = Major + Compiler
     implementation(libs.dagger)
     ksp(libs.dagger.compiler)
 
