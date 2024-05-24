@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.androidKsp)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -43,6 +44,10 @@ dependencies {
 
     // Datastore = Preferences
     implementation(libs.androidx.datastore.preferences)
+
+    // Navigation
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
 
     // Dagger = Major + Compiler
     implementation(libs.dagger)

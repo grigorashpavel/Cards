@@ -15,6 +15,7 @@
 
     <style name="Widget.Pasha.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/ShapeAppearance.Pasha.SmallComponent</item>
+        <item name="errorEnabled">true</item>
         <item name="android:minHeight">64dip</item>
         <item name="boxBackgroundColor">@color/primary_0</item>
         <item name="boxStrokeColor">@color/pasha_textfields_stroke_color</item>
@@ -76,5 +77,12 @@
         <item name="itemTextAppearanceInactive">@style/TextAppearance.Pasha.TitleSmall</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.Pasha.TitleSmall</item>
         <item name="itemTextColor">@color/pasha_navigation_bar_item_with_indicator_label_tint</item>
+    </style>
+
+    <style name="Theme.Pasha.MaterialAlertDialog.Centered" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="colorPrimary">@color/primary_900</item>
+        <item name="colorSurfaceContainerHigh">@color/primary_0</item>
+        <item name="colorOnSurface">@color/primary_900</item>
+        <item name="colorOnSurfaceVariant">@color/primary_900</item>
     </style>
 </resources>

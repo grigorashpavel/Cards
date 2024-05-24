@@ -83,6 +83,7 @@
             app:endIconMode="custom">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/code"
@@ -122,6 +123,7 @@
         app:layout_constraintTop_toBottomOf="@id/containerCodeVerification" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirm"
         style="@style/Widget.Pasha.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -2,7 +2,9 @@ package com.pasha.cards.di
 
 import android.content.Context
 import com.pasha.auth.api.AuthDeps
+import com.pasha.auth.api.AuthNavCommandProvider
 import com.pasha.auth.api.AuthNetworkProvider
+import com.pasha.cards.AuthNavCommandProviderImpl
 import com.pasha.cards.AuthNetworkProviderImpl
 import com.pasha.core.di.DependeciesKey
 import com.pasha.core.di.Dependencies
@@ -19,6 +21,9 @@ interface AuthFeatureModule {
         @Provides
         fun provideIdentificationManager(context: Context): IdentificationManager =
             IdentificationManagerImpl(context)
+
+        @Provides
+        fun provideAuthNavCommandProvider(): AuthNavCommandProvider = AuthNavCommandProviderImpl()
     }
 
     @Binds

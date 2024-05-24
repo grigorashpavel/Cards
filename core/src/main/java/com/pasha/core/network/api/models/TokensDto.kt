@@ -1,4 +1,4 @@
-package com.pasha.core.network.internal.models
+package com.pasha.core.network.api.models
 
 
 import com.google.gson.annotations.SerializedName
