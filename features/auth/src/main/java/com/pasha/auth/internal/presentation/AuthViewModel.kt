@@ -10,9 +10,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import com.pasha.auth.internal.domain.models.Credentials
+import com.pasha.auth.internal.domain.models.Tokens
 import com.pasha.auth.internal.domain.repositories.AuthRepository
+import com.pasha.core.account.Authenticator
 import com.pasha.core.network.api.utils.Response
-import com.pasha.core.shared.SharedApplicationViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -26,6 +27,8 @@ import kotlin.coroutines.coroutineContext
 private const val EMAIL_KEY = "EMAIL_KEY"
 private const val PASSWORD_KEY = "PASSWORD_KEY"
 private const val CODE_KEY = "CODE_KEY"
+private const val ACCESS_TOKEN_KEY = "ACCESS_TOKEN"
+private const val REFRESH_TOKEN_KEY = "REFRESH_TOKEN"
 
 private const val VM_TAG = "AUTH_VIEW_MODEL"
 
@@ -48,11 +51,19 @@ internal class AuthViewModel(
     }
     val errorStateHolder get(): LiveData<ErrorState> = _errorStateHolder
 
+    var tokens: Tokens? = null
+        private set
+
     fun saveCredentials(email: String, password: String) {
         Log.d(VM_TAG, "fun saveCredentials(email: $email password: $password)")
 
         savedState[EMAIL_KEY] = email
         savedState[PASSWORD_KEY] = password
+
+        if (tokens != null) {
+            savedState[ACCESS_TOKEN_KEY] = tokens!!.accessToken
+            savedState[REFRESH_TOKEN_KEY] = tokens!!.refreshToken
+        }
     }
 
     private val _isLoading = MutableLiveData(false)
@@ -87,9 +98,8 @@ internal class AuthViewModel(
 
                 is Response.Success -> {
                     _isLoading.value = false
-                    println("access: ${response.data.accessToken}")
-                    println("refresh: ${response.data.refreshToken}")
 
+                    tokens = Tokens(response.data.accessToken, response.data.refreshToken)
                     _isAuthorized.value = true
 
                     Log.d(VM_TAG, "fun signIn: Response.Success: $response")
@@ -138,8 +148,7 @@ internal class AuthViewModel(
                 is Response.Success -> {
                     _isLoading.value = false
 
-                    println(response.data.accessToken)
-                    println(response.data.refreshToken)
+                    tokens = Tokens(response.data.accessToken, response.data.refreshToken)
 
                     _isAuthorized.value = true
 
@@ -156,14 +165,6 @@ internal class AuthViewModel(
             }
 
         }.launchIn(viewModelScope)
-
-        activeJob?.invokeOnCompletion { exception ->
-            if (exception == null) {
-                activeJob = null
-            } else {
-                throw exception
-            }
-        }
     }
 
     fun clearErrorState() {
@@ -174,6 +175,12 @@ internal class AuthViewModel(
         val email = savedState.get<String>(EMAIL_KEY) ?: ""
         val password = savedState.get<String>(PASSWORD_KEY) ?: ""
         val code = savedState.get<String>(CODE_KEY) ?: ""
+
+        val accessToken = savedState.get<String>(ACCESS_TOKEN_KEY)
+        val refreshToken = savedState.get<String>(REFRESH_TOKEN_KEY)
+        if (accessToken != null && refreshToken != null) {
+            tokens = Tokens(accessToken, refreshToken)
+        }
 
         Log.d(VM_TAG, "fun restoreUiState(email: $email, password: $password, code: $code)")
 

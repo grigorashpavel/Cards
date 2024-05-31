@@ -41,6 +41,8 @@ dependencies {
     // REST = Retrofit2 + Gson
     implementation(libs.retrofit2.retrofit)
     implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3.okhttp)
+
 
     // Datastore = Preferences
     implementation(libs.androidx.datastore.preferences)

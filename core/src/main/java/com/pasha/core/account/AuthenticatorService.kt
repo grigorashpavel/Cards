@@ -4,25 +4,34 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
+import javax.inject.Inject
 
 
 private const val AUTH_SERVICE_TAG = "AuthenticatorService"
 
 class AuthenticatorService : Service() {
-    private lateinit var _authenticator: Authenticator
+    @Inject
+    lateinit var _factory: Authenticator.Factory
+
+
+    lateinit var _authenticator: Authenticator
 
     override fun onCreate() {
         super.onCreate()
 
-        Log.d(AUTH_SERVICE_TAG, "onCreate()")
+        DaggerAccountComponent
+            .factory()
+            .create((applicationContext as AccountDepsProvider).deps)
+            .inject(this)
 
-        _authenticator = Authenticator(applicationContext)
+        _authenticator = _factory.create(applicationContext)
+        Log.d(AUTH_SERVICE_TAG, "onCreate()")
     }
 
     override fun onBind(intent: Intent?): IBinder {
         Log.d(AUTH_SERVICE_TAG, "onBind()")
 
-        return  _authenticator.iBinder
+        return _authenticator.iBinder
     }
 
     override fun onDestroy() {

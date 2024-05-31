@@ -1,28 +1,24 @@
 package com.pasha.auth.api
 
+import android.accounts.Account
+import android.accounts.AccountManager
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Message
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pasha.auth.R
 import com.pasha.auth.databinding.FragmentSignInBinding
-import com.pasha.auth.internal.di.AuthComponent
 import com.pasha.auth.internal.di.DaggerAuthComponent
-import com.pasha.auth.internal.di.InternalAuthModule
 import com.pasha.auth.internal.presentation.AuthViewModel
+import com.pasha.core.account.Authenticator
+import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.di.findDependencies
 import com.pasha.core.progress_indicator.api.ProgressIndicator
+import com.pasha.core.ui_deps.ActivityUiDeps
 import javax.inject.Inject
 
 
@@ -36,27 +32,32 @@ class SignInFragment : Fragment() {
     @Inject
     lateinit var navigationProvider: AuthNavCommandProvider
 
+    private lateinit var uiDepsProvider: ActivityUiDeps
+
     private val viewModel: AuthViewModel by viewModels {
         factory.create(this)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        DaggerAuthComponent
-            .factory()
+        DaggerAuthComponent.factory()
             .create(findDependencies())
             .inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        uiDepsProvider = requireContext() as ActivityUiDeps
+
+        if (uiDepsProvider.isOpenedByAuthenticatorToCreateAccount()) {
+            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+        }
 
         if (savedInstanceState != null) viewModel.restoreUiState()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
@@ -65,8 +66,45 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.isAuthorized.observe(viewLifecycleOwner) { authorized ->
-            if (authorized) findNavController().navigate(navigationProvider.toAllCards.action)
+        uiDepsProvider.hideBottomNavigationView()
+
+        viewModel.isAuthorized.observe(viewLifecycleOwner) { isAuthorized ->
+            if (isAuthorized) {
+                val manager = CardsAccountManager(requireContext())
+                val email = binding.etEmail.text.toString()
+                val password = binding.etPassword.toString()
+
+                val targetAccount = manager.cardsAccounts.find { it.name == email }
+                if (targetAccount == null) {
+                    val isCreated = manager
+                        .createAccount(email, password, isTemporary = true, isActive = true)
+
+                    if (isCreated) {
+                        val tokens = viewModel.tokens
+                        if (tokens != null) {
+                            manager.setTokensOnActiveAccount(
+                                tokens.accessToken,
+                                tokens.refreshToken
+                            )
+                        }
+
+                        uiDepsProvider.offerToAddAccount {
+                            val createdAccount = manager.activeAccount
+                            manager.saveAccount(createdAccount)
+                        }
+
+                    } else uiDepsProvider.showErrorMessage("Can`t create Account: $email")
+
+                } else if (viewModel.tokens != null) {
+                    manager.activateAccount(targetAccount)
+
+                    val tokens = viewModel.tokens!!
+                    manager.setTokensOnActiveAccount(tokens.accessToken, tokens.refreshToken)
+                }
+
+                findNavController().navigate(navigationProvider.toAllCards.action)
+            }
+
         }
 
         binding.btnSignUp.setOnClickListener {
@@ -84,7 +122,7 @@ class SignInFragment : Fragment() {
 
         viewModel.errorStateHolder.observe(viewLifecycleOwner) { state ->
             if (state.responseMessage != null) {
-                showErrorMessage(state.responseMessage)
+                uiDepsProvider.showErrorMessage(state.responseMessage)
             }
         }
 
@@ -117,19 +155,5 @@ class SignInFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun showErrorMessage(message: String) {
-        MaterialAlertDialogBuilder(
-            requireContext(),
-            com.pasha.core_ui.R.style.Theme_Pasha_MaterialAlertDialog_Centered
-        )
-            .setTitle("Ошибка")
-            .setMessage(message)
-            .setNeutralButton(android.R.string.ok) { _, _ ->
-                viewModel.clearErrorState()
-            }
-            .show()
-
     }
 }

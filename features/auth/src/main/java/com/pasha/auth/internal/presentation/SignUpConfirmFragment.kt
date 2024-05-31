@@ -17,6 +17,7 @@ import com.pasha.auth.databinding.FragmentSignUpConfirmBinding
 import com.pasha.auth.internal.di.DaggerAuthComponent
 import com.pasha.core.di.findDependencies
 import com.pasha.core.progress_indicator.api.ProgressIndicator
+import com.pasha.core.ui_deps.ActivityUiDeps
 import javax.inject.Inject
 
 
@@ -34,6 +35,8 @@ internal class SignUpConfirmFragment : Fragment() {
         factory.create(this)
     }
 
+    private lateinit var uiDepsProvider: ActivityUiDeps
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerAuthComponent
@@ -45,6 +48,7 @@ internal class SignUpConfirmFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        uiDepsProvider = requireContext() as ActivityUiDeps
         if (savedInstanceState != null) viewModel.restoreUiState()
     }
 
@@ -59,6 +63,7 @@ internal class SignUpConfirmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        uiDepsProvider.hideBottomNavigationView()
 
         binding.btnConfirm.setOnClickListener {
             findNavController().navigate(navigationProvider.toAllCards.action)

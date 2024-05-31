@@ -5,6 +5,8 @@ import com.pasha.auth.api.AuthNavCommandProvider
 import com.pasha.auth.api.AuthNetworkProvider
 import com.pasha.cards.di.AppScope
 import com.pasha.cards.di.DaggerCardsApplicationComponent
+import com.pasha.core.account.AccountDeps
+import com.pasha.core.account.AccountDepsProvider
 import com.pasha.core.di.DepsMap
 import com.pasha.core.di.HasDependencies
 import com.pasha.core.navigation.NavCommand
@@ -12,9 +14,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-class CardsApplication : Application(), HasDependencies {
+class CardsApplication : Application(), HasDependencies, AccountDepsProvider {
     @Inject
     override lateinit var depsMap: DepsMap
+
+    @Inject
+    override lateinit var deps: AccountDeps
 
     override fun onCreate() {
         super.onCreate()

@@ -1,5 +1,7 @@
 package com.pasha.auth.internal.presentation
 
+import android.accounts.Account
+import android.accounts.AccountManager
 import android.content.Context
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -12,11 +14,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 import com.pasha.auth.api.AuthNavCommandProvider
 import com.pasha.auth.databinding.FragmentSignUpBinding
 import com.pasha.auth.internal.di.DaggerAuthComponent
+import com.pasha.core.account.Authenticator
+import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.di.findDependencies
 import com.pasha.core.progress_indicator.api.ProgressIndicator
+import com.pasha.core.ui_deps.ActivityUiDeps
 import com.pasha.core_ui.R
 import javax.inject.Inject
 
@@ -33,6 +39,8 @@ internal class SignUpFragment : Fragment() {
     @Inject
     lateinit var navigationProvider: AuthNavCommandProvider
 
+    private lateinit var uiDepsProvider: ActivityUiDeps
+
     private val viewModel: AuthViewModel by viewModels {
         factory.create(this)
     }
@@ -47,6 +55,7 @@ internal class SignUpFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        uiDepsProvider = requireContext() as ActivityUiDeps
 
         if (savedInstanceState != null) viewModel.restoreUiState()
     }
@@ -63,9 +72,50 @@ internal class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        uiDepsProvider.hideBottomNavigationView()
 
-        viewModel.isAuthorized.observe(viewLifecycleOwner) { authorized ->
-            if (authorized) findNavController().navigate(navigationProvider.toAllCards.action)
+        if (uiDepsProvider.isOpenedByAuthenticatorToCreateAccount()) {
+            binding.tvBodyAlreadyHaveAccount.visibility = View.GONE
+            binding.btnLogin.visibility = View.GONE
+        }
+
+        viewModel.isAuthorized.observe(viewLifecycleOwner) { isAuthorized ->
+            if (isAuthorized) {
+                val manager = CardsAccountManager(requireContext())
+                val email = binding.etEmail.text.toString()
+                val password = binding.etPassword.toString()
+
+                val targetAccount = manager.cardsAccounts.find { it.name == email }
+                if (targetAccount == null) {
+                    val isCreated = manager
+                        .createAccount(email, password, isTemporary = true, isActive = true)
+
+                    if (isCreated) {
+                        val tokens = viewModel.tokens
+                        if (tokens != null) {
+                            manager.setTokensOnActiveAccount(
+                                tokens.accessToken,
+                                tokens.refreshToken
+                            )
+                        }
+
+                        uiDepsProvider.offerToAddAccount {
+                            val createdAccount = manager.activeAccount
+                            manager.saveAccount(createdAccount)
+                        }
+
+                    } else uiDepsProvider.showErrorMessage("Can`t create Account: $email")
+
+                } else if (viewModel.tokens != null) {
+                    manager.activateAccount(targetAccount)
+
+                    val tokens = viewModel.tokens!!
+                    manager.setTokensOnActiveAccount(tokens.accessToken, tokens.refreshToken)
+                }
+
+                findNavController().navigate(navigationProvider.toAllCards.action)
+            }
+
         }
 
         binding.btnLogin.setOnClickListener {

@@ -19,6 +19,7 @@ gson = "2.5.0"
 coroutines = "1.8.1"
 lifecycle = "2.8.0"
 fragment = "1.7.1"
+okhttp = "4.9.1"
 
 
 [libraries]
@@ -51,6 +52,7 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 
 retrofit2-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit2-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gson" }
+okhttp3-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }

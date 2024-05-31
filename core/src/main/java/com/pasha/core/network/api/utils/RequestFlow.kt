@@ -9,8 +9,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
+import okhttp3.Connection
 import retrofit2.Call
 import retrofit2.HttpException
+import java.net.ConnectException
 
 
 private const val AUTH_TIMEOUT = 7_000L
@@ -28,18 +30,18 @@ fun <T> requestTokensFlow(call: suspend () -> retrofit2.Response<T>): Flow<Respo
     Log.d(REQUEST_FLOW_TAG, "fun <T> requestTokensFlow() Thread: ${Thread.currentThread().name}")
 
     withTimeoutOrNull(AUTH_TIMEOUT) {
-        val response = call()
-
-        Log.d(
-            REQUEST_FLOW_TAG,
-            "fun <T> requestTokensFlow().withTimeoutOrNull Thread: ${Thread.currentThread().name}"
-        )
-
-        Log.d(REQUEST_FLOW_TAG, "code: ${response.code()}")
-        Log.d(REQUEST_FLOW_TAG, "headers: ${response.headers()}")
-        Log.d(REQUEST_FLOW_TAG, "message: ${response.message()}")
-
         try {
+            val response = call()
+
+            Log.d(
+                REQUEST_FLOW_TAG,
+                "fun <T> requestTokensFlow().withTimeoutOrNull Thread: ${Thread.currentThread().name}"
+            )
+
+            Log.d(REQUEST_FLOW_TAG, "code: ${response.code()}")
+            Log.d(REQUEST_FLOW_TAG, "headers: ${response.headers()}")
+            Log.d(REQUEST_FLOW_TAG, "message: ${response.message()}")
+
             if (response.isSuccessful) {
                 Log.d(REQUEST_FLOW_TAG, "Response Success")
                 response.body()?.let { tokens ->
@@ -55,12 +57,19 @@ fun <T> requestTokensFlow(call: suspend () -> retrofit2.Response<T>): Flow<Respo
                 )
             }
         } catch (e: HttpException) {
-//            emit(
-//                Response.Error(
-//                    code = e.code(),
-//                    errorMessage = e.message() ?: "Unresolved error in requestTokenFlow"
-//                )
-//            )
+            emit(
+                Response.Error(
+                    code = e.code(),
+                    errorMessage = e.message() ?: "Unresolved error in requestTokenFlow"
+                )
+            )
+        } catch (eConnection: ConnectException) {
+            emit(
+                Response.Error(
+                    code = 0,
+                    errorMessage = "Bad connection or Server don`t work!"
+                )
+            )
         }
-    } ?: emit(Response.Error(code = 408, "Timeout!"))
+    } ?: emit(Response.Error(code = 408, "Bad connection. try again later!"))
 }.flowOn(Dispatchers.IO)
