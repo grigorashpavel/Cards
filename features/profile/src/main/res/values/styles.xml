@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Pasha.CompoundButton.MaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="trackTint">@color/pasha_color_switch_track</item>
+        <item name="thumbTint">@color/pasha_color_switch_thumb</item>
+        <item name="trackDecorationTint">@color/pasha_color_switch_decoration</item>
+    </style>
+
+    <style name="Widget.Pasha.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:textColorPrimary">@color/primary_900</item>
+        <item name="dropDownBackgroundTint">@color/primary_100</item>
+    </style>
+
+    <style name="Theme.Cards.ActionBarStyle" parent="Theme.Cards">
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+</resources>

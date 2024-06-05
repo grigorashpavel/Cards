@@ -1,14 +1,10 @@
 package com.pasha.core.progress_indicator.api
 
 import android.app.Dialog
-import android.app.KeyguardManager.KeyguardDismissCallback
 import android.content.DialogInterface
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
@@ -41,7 +37,7 @@ class ProgressIndicator : DialogFragment() {
         cancelCallback?.invoke()
     }
 
-    fun setCallback(callback: () -> Unit) {
+    fun setCancelCallback(callback: () -> Unit) {
         cancelCallback = callback
     }
 

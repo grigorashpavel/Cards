@@ -1,15 +1,18 @@
 package com.pasha.cards
 
 import android.accounts.Account
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.pasha.auth.R
 import com.pasha.cards.databinding.ActivityMainBinding
 import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.progress_indicator.api.ProgressIndicator
@@ -17,14 +20,15 @@ import com.pasha.core.ui_deps.ActivityUiDeps
 
 
 private const val ACTIVITY_TAG = "MAIN_ACTIVITY"
-
+private const val AUTH_DEST_LABEL = "fragment_sign_in"
 
 class MainActivity : AppCompatActivity(), ActivityUiDeps {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(ACTIVITY_TAG, "fun onCreate()")
-
 
         val manager = CardsAccountManager(this)
         manager.logCardsAccounts()
@@ -33,13 +37,14 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navigationController =
+        navController =
             binding.navHostFragment.getFragment<NavHostFragment>().navController
-        binding.bottomNavigationView.setupWithNavController(navigationController)
+        binding.bottomNavigationView.setupWithNavController(navController)
 
+        setupCustomBackPressNavigation()
 
         if (isOpenedByAuthenticatorToCreateAccount()) {
-            navigationController.navigate(R.id.auth_feature_nested_graph)
+            navigateToAuth()
             return
         }
 
@@ -51,19 +56,37 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
                     if (indicator.isResumed) indicator.dismiss()
                 },
                 authNavigationCallback = {
-                    // Осталось поймать момент когда ключ refresh уничтожается
-                    navigationController.navigate(R.id.auth_feature_nested_graph)
+                    navigateToAuth()
                 },
                 showErrorMassageCallback = ::showErrorMessage
             )
 
             val activeAccount = manager.activeAccount
             if (activeAccount != null) {
-                manager.getAuthTokenAsync(activeAccount, this, tokenCallback)
+                manager.getAuthTokenAsyncByCallback(activeAccount, this, tokenCallback)
             } else {
-                navigationController.navigate(R.id.auth_feature_nested_graph)
+                navigateToAuth()
             }
         }
+    }
+
+    private fun navigateToAuth() {
+        navController.popBackStack(R.id.auth, true)
+        navController.navigate(R.id.auth)
+    }
+
+    private fun setupCustomBackPressNavigation() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            @SuppressLint("RestrictedApi")
+            override fun handleOnBackPressed() {
+                val timeToAuth = navController.currentDestination?.label == AUTH_DEST_LABEL
+                if (timeToAuth) finish()
+
+                val canNavigateUp = navController.navigateUp()
+                if (canNavigateUp) return else finish()
+            }
+
+        })
     }
 
     private fun List<Account>.pickAccount(callback: (Int) -> Unit) {
@@ -85,7 +108,7 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
             this,
             com.pasha.core_ui.R.style.Theme_Pasha_MaterialAlertDialog_Centered
         )
-            .setTitle("Ошибка")
+            .setTitle("Error")
             .setMessage(message)
             .setNeutralButton(android.R.string.ok) { _, _ ->
 

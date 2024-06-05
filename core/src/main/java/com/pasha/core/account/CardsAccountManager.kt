@@ -160,7 +160,7 @@ class CardsAccountManager(context: Context) {
      * @see[TokenCallback]
      *
      */
-    fun getAuthTokenAsync(account: Account, activity: Activity, callback: TokenCallback) {
+    fun getAuthTokenAsyncByCallback(account: Account, activity: Activity, callback: TokenCallback) {
         manager.getAuthToken(
             account,
             Authenticator.KEY_ACCESS_TOKEN,
@@ -169,6 +169,30 @@ class CardsAccountManager(context: Context) {
             callback,
             null
         )
+    }
+
+    /**
+     * Получает закешированный токен доступа из системы. Метод асинхронный,
+     * напрямую не вызывать на главном потоке. Запускает на потоке [AccountManagerFuture], по завершению
+     * возращает токен или null. Блокирует поток.
+     *
+     * **!ВАЖНО!** Если не получается получить закешированный токен, то используется [Authenticator],
+     * для обновления токенов с сервера. Поэтому метод асинхронный.
+     * @param[account] аккаунт, для которого хотим получить токен доступа
+     * @return Access Token или null
+     * @see[Authenticator]
+     */
+    suspend fun getAuthTokenAsync(account: Account): String? {
+        val future = manager.getAuthToken(
+            account,
+            Authenticator.KEY_ACCESS_TOKEN,
+            null,
+            true,
+            null,
+            null
+        )
+
+        return future.result.getString(AccountManager.KEY_AUTHTOKEN)
     }
 
     /**
@@ -198,9 +222,9 @@ class CardsAccountManager(context: Context) {
      *
      */
     inner class TokenCallback(
-        private val authNavigationCallback: () -> Unit,
-        private val indicatorDismissCallback: () -> Unit,
-        private val showErrorMassageCallback: (message: String) -> Unit
+        private val authNavigationCallback: (() -> Unit)? = null,
+        private val indicatorDismissCallback: (() -> Unit)? = null,
+        private val showErrorMassageCallback: ((message: String) -> Unit)? = null,
     ) : AccountManagerCallback<Bundle> {
         /**
          * Единственный метод SAM-интерфейса наследования. Выполняется как результат [AccountManagerFuture]
@@ -215,19 +239,20 @@ class CardsAccountManager(context: Context) {
                 val errorMessage = bundle?.getString(AccountManager.KEY_ERROR_MESSAGE)
                 val accessToken = bundle?.getString(AccountManager.KEY_AUTHTOKEN)
 
-                indicatorDismissCallback.invoke()
+                indicatorDismissCallback?.invoke()
                 if (accessToken != null) {
-                    invalidateTokens(accessToken)
+                    //invalidateTokens(accessToken)
                 } else if (errorCode != null) {
+
                     if (errorCode == "401") {
-                        authNavigationCallback.invoke()
+                        authNavigationCallback?.invoke()
                         exitFromAccount()
                     }
 
                     val canShowMessage =
                         errorCode.isNotEmpty() && (errorMessage?.let { it.isNotEmpty() } ?: false)
                     if (canShowMessage) {
-                        showErrorMassageCallback.invoke("Code: $errorCode\nMessage: $errorMessage")
+                        showErrorMassageCallback?.invoke("Code: $errorCode\nMessage: $errorMessage")
                     }
                 }
             } catch (e: Exception) {
@@ -240,5 +265,6 @@ class CardsAccountManager(context: Context) {
         const val IS_ACTIVE_ACCOUNT = "is_active"
         const val IS_SAVED_ACCOUNT = "is_saved"
         const val ACCOUNT_TYPE = "com.pasha.cards"
+        const val ACCESS_TOKEN = "access_token"
     }
 }

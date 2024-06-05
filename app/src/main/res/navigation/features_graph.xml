@@ -3,29 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/features_graph"
-    app:startDestination="@id/all_cards_feature_nested_graph">
+    app:startDestination="@+id/all_cards">
 
-    <navigation
-        android:id="@+id/all_cards_feature_nested_graph"
-        app:startDestination="@id/all_cards_feature_graph">
-        <include app:graph="@navigation/all_cards_feature_graph" />
-        <action
-            android:id="@+id/action_global_profile_feature_nested_graph"
-            app:destination="@id/profile_feature_nested_graph" />
-    </navigation>
+    <fragment android:id="@+id/bottomNavigationStack" />
 
-
-    <navigation
-        android:id="@+id/auth_feature_nested_graph"
-        app:startDestination="@id/auth_feature_graph">
-        <include app:graph="@navigation/auth_feature_graph" />
-
-        <action
-            android:id="@+id/action_global_all_cards_feature_nested_graph"
-            app:destination="@id/all_cards_feature_nested_graph" />
-    </navigation>
-    <navigation android:id="@+id/profile_feature_nested_graph"
-        app:startDestination="@id/profile_feature_graph">
-        <include app:graph="@navigation/profile_feature_graph" />
-    </navigation>
+    <include app:graph="@navigation/all_cards_graph" />
+    <include app:graph="@navigation/auth_graph" />
+    <include app:graph="@navigation/profile_graph" />
 </navigation>

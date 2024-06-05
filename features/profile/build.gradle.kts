@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.androidKsp)
 }
 
 android {
@@ -41,12 +42,31 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
 
+    // Dagger = Major + Compiler
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
+    // REST = Retrofit2 + Gson
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3.okhttp)
+
+    // Picasso
+    implementation(libs.picasso.picasso)
+
     implementation(project(":core-ui"))
+    implementation(project(":core"))
+
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.coordinatorlayout)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.fragment)
+
+    implementation(libs.androidx.preferences.preferences.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

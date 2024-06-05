@@ -1,29 +1,22 @@
 package com.pasha.auth.internal.presentation
 
-import android.accounts.Account
-import android.accounts.AccountManager
 import android.content.Context
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 import com.pasha.auth.api.AuthNavCommandProvider
 import com.pasha.auth.databinding.FragmentSignUpBinding
 import com.pasha.auth.internal.di.DaggerAuthComponent
-import com.pasha.core.account.Authenticator
 import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.di.findDependencies
 import com.pasha.core.progress_indicator.api.ProgressIndicator
 import com.pasha.core.ui_deps.ActivityUiDeps
-import com.pasha.core_ui.R
 import javax.inject.Inject
 
 
@@ -47,8 +40,7 @@ internal class SignUpFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        DaggerAuthComponent
-            .factory()
+        DaggerAuthComponent.factory()
             .create(findDependencies())
             .inject(this)
     }
@@ -129,7 +121,7 @@ internal class SignUpFragment : Fragment() {
 
         viewModel.errorStateHolder.observe(viewLifecycleOwner) { state ->
             if (state.responseMessage != null) {
-                showErrorMessage(state.responseMessage)
+                uiDepsProvider.showErrorMessage(state.responseMessage)
             }
         }
 
@@ -139,11 +131,7 @@ internal class SignUpFragment : Fragment() {
 
 
         val progressIndicator = ProgressIndicator().apply {
-            setCallback {
-                viewModel.cancelLastTask()
-                Toast.makeText(this@SignUpFragment.context, "Cancelled", Toast.LENGTH_SHORT)
-                    .show()
-            }
+            setCancelCallback(viewModel::cancelLastTask)
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -167,19 +155,5 @@ internal class SignUpFragment : Fragment() {
         )
 
         super.onStop()
-    }
-
-    private fun showErrorMessage(message: String) {
-        MaterialAlertDialogBuilder(
-            requireContext(),
-            R.style.Theme_Pasha_MaterialAlertDialog_Centered
-        )
-            .setTitle("Ошибка")
-            .setMessage(message)
-            .setNeutralButton(android.R.string.ok) { _, _ ->
-                viewModel.clearErrorState()
-            }
-            .show()
-
     }
 }

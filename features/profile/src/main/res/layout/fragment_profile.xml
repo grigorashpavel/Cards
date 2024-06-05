@@ -4,41 +4,242 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:theme="@style/Theme.Cards.ActionBarStyle"
+    tools:context=".api.ProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="270dp">
+        android:layout_height="270dp"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primary_400">
+            android:background="@color/primary_400"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/primary_100"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivBackgroundHeader"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
                 android:src="@drawable/ic_empty_resource_image_20"
+                app:layout_collapseMode="parallax"
                 app:tint="@color/primary_300" />
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-
-                android:layout_height="64dp"
+                android:layout_height="?attr/actionBarSize"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_100"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="96dp">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:trackThickness="8dp"
+                app:trackColor="@color/primary_900"
+                app:indicatorSize="64dp"
+                app:trackCornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupProfileContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="
+                tvProfileTitle,
+                ivProfileIcon,
+                tvUsername,
+                ivEmailIcon,
+                tvEmail,
+                tvCardsNumber,
+                tvCardsSubtitle,
+                divider,
+                tvLastCardsTitle,
+                rvLastCards" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="left"
+                android:text="Name"
+                android:textAppearance="@style/TextAppearance.Pasha.DisplaySmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfileIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_profile_image_empty"
+                android:tint="@color/primary_900"
+                app:layout_constraintStart_toStartOf="@id/tvProfileTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Username: "
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                app:layout_constraintBottom_toBottomOf="@id/ivProfileIcon"
+                app:layout_constraintStart_toEndOf="@id/ivProfileIcon"
+                app:layout_constraintTop_toTopOf="@id/ivProfileIcon" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivEmailIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_mail_24"
+                android:tint="@color/primary_900"
+                app:layout_constraintStart_toStartOf="@id/ivProfileIcon"
+                app:layout_constraintTop_toBottomOf="@id/ivProfileIcon" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                app:layout_constraintBottom_toBottomOf="@id/ivEmailIcon"
+                app:layout_constraintStart_toStartOf="@id/tvUsername"
+                app:layout_constraintTop_toTopOf="@id/ivEmailIcon" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCardsNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="0"
+                android:textAppearance="@style/TextAppearance.Pasha.DisplaySmall"
+                app:layout_constraintStart_toStartOf="@id/ivEmailIcon"
+                app:layout_constraintTop_toBottomOf="@id/ivEmailIcon" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCardsSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cards"
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                app:layout_constraintStart_toStartOf="@id/tvCardsNumber"
+                app:layout_constraintTop_toBottomOf="@id/tvCardsNumber" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:dividerColor="@color/primary_900"
+                app:dividerThickness="1dp"
+                app:layout_constraintBottom_toTopOf="@id/tvLastCardsTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardsSubtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLastCardsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp"
+                android:text="Last Cards"
+                android:textAppearance="@style/TextAppearance.Pasha.HeadlineMedium"
+                app:layout_constraintStart_toStartOf="@id/tvCardsSubtitle"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLastCards"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLastCardsTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="96dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="left"
+                android:text="Username"
+                android:textAppearance="@style/TextAppearance.Pasha.HeadlineLarge"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TEST"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_mail_24"
+                android:tint="@color/primary_900"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout-->
+
+    </androidx.core.widget.NestedScrollView>
+
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivProfileImage"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:background="@color/primary_600"
+        android:scaleType="center"
+        android:src="@drawable/ic_profile_image_empty"
         app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom|center"
+        app:layout_behavior="com.pasha.profile.internal.presentation.behaviours.ProfileImageBehaviour"
         app:shapeAppearance="@style/Circular"
         app:strokeColor="@color/primary_300"
         app:strokeWidth="1dp" />

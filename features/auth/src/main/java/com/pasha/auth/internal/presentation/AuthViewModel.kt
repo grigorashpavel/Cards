@@ -110,6 +110,7 @@ internal class AuthViewModel(
 
                     _errorStateHolder.value =
                         ErrorState(responseMessage = response.errorMessage)
+                    _errorStateHolder.value = ErrorState()
                     Log.d(VM_TAG, "fun signIn: Response.Error: $response")
                 }
             }
@@ -160,17 +161,13 @@ internal class AuthViewModel(
 
                     _errorStateHolder.value =
                         ErrorState(responseMessage = response.errorMessage)
+                    _errorStateHolder.value = ErrorState()
                     Log.d(VM_TAG, "fun signUp: Response.Error: $response")
                 }
             }
 
         }.launchIn(viewModelScope)
     }
-
-    fun clearErrorState() {
-        _errorStateHolder.value = ErrorState()
-    }
-
     fun restoreUiState() {
         val email = savedState.get<String>(EMAIL_KEY) ?: ""
         val password = savedState.get<String>(PASSWORD_KEY) ?: ""

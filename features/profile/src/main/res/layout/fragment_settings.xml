@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_100"
+    tools:context=".internal.presentation.SettingsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:minHeight="?attr/actionBarSize"
+
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationIconTint="@color/primary_900" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/settingsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="Settings"
+                android:textAppearance="@style/TextAppearance.Pasha.DisplaySmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/securityTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
+                android:text="Security"
+                android:textAppearance="@style/TextAppearance.Pasha.TitleLarge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/settingsTitle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDevices"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/primary_200"
+                android:gravity="start"
+                android:paddingVertical="16dp"
+                android:text="Devices"
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                android:textColor="@color/primary_900"
+                app:icon="@drawable/ic_smartphone_24"
+                app:iconPadding="16dp"
+                app:iconTint="@color/primary_900"
+                app:layout_constraintEnd_toEndOf="@id/securityTitle"
+                app:layout_constraintStart_toStartOf="@id/securityTitle"
+                app:layout_constraintTop_toBottomOf="@id/securityTitle"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDevices"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/btnDevices"
+                app:layout_constraintStart_toStartOf="@id/btnDevices"
+                app:layout_constraintTop_toBottomOf="@id/btnDevices" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/themeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Theme"
+                android:textAppearance="@style/TextAppearance.Pasha.TitleLarge"
+                app:layout_constraintEnd_toEndOf="@id/settingsTitle"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintStart_toStartOf="@id/settingsTitle"
+                app:layout_constraintTop_toBottomOf="@id/rvDevices" />
+
+            <LinearLayout
+                android:id="@+id/containerTheme"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/pasha_rounded_background"
+                android:gravity="center_vertical|start"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                app:layout_constraintEnd_toEndOf="@id/settingsTitle"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintStart_toStartOf="@id/settingsTitle"
+                app:layout_constraintTop_toBottomOf="@id/themeTitle">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_theme_24"
+                    android:tint="@color/primary_900" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Theme"
+                    android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular" />
+            </LinearLayout>
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switchTheme"
+                style="@style/Widget.Pasha.CompoundButton.MaterialSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="@id/containerTheme"
+                app:layout_constraintEnd_toEndOf="@id/containerTheme"
+                app:layout_constraintTop_toTopOf="@id/containerTheme"
+                app:thumbIcon="@drawable/ic_dark_mode_24"
+                app:thumbIconTint="@color/primary_900" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/languageTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Language"
+                android:textAppearance="@style/TextAppearance.Pasha.TitleLarge"
+                app:layout_constraintEnd_toEndOf="@id/settingsTitle"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintStart_toStartOf="@id/settingsTitle"
+                app:layout_constraintTop_toBottomOf="@id/containerTheme" />
+
+            <!--com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/languageLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/settingsTitle"
+                app:layout_constraintStart_toStartOf="@id/settingsTitle"
+                app:layout_constraintTop_toBottomOf="@id/languageTitle"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/languageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:paddingVertical="16dp" />
+            </com.google.android.material.textfield.TextInputLayout-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@ import android.util.Log
 import com.pasha.core.network.api.SessionService
 import com.pasha.core.network.api.models.CredentialsDto
 import com.pasha.core.network.api.utils.Response
-import com.pasha.core.network.api.utils.requestTokensFlow
+import com.pasha.core.network.api.utils.requestFlow
 import com.pasha.core.store.api.IdentificationManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -88,7 +88,7 @@ class Authenticator @AssistedInject constructor(
             Log.d(AUTH_TAG, "Authenticator try to block thread for async call")
             runBlocking {
                 Log.d(AUTH_TAG, "Authenticator try to call requestTokensFLow")
-                requestTokensFlow {
+                requestFlow {
                     sessionService.extendSession("Bearer $refreshToken", credentialsDto)
                 }.onEach { response ->
                     when (response) {

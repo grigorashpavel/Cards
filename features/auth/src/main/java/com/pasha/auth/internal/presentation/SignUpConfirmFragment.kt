@@ -2,7 +2,6 @@ package com.pasha.auth.internal.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.pasha.auth.R
 import com.pasha.auth.api.AuthNavCommandProvider
-import com.pasha.auth.databinding.FragmentSignUpBinding
 import com.pasha.auth.databinding.FragmentSignUpConfirmBinding
 import com.pasha.auth.internal.di.DaggerAuthComponent
 import com.pasha.core.di.findDependencies
@@ -74,7 +71,7 @@ internal class SignUpConfirmFragment : Fragment() {
         }
 
         val progressIndicator = ProgressIndicator().apply {
-            setCallback {
+            setCancelCallback {
                 viewModel.cancelLastTask()
                 Toast.makeText(this@SignUpConfirmFragment.context, "Cancelled", Toast.LENGTH_SHORT)
                     .show()

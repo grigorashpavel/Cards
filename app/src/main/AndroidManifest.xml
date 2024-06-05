@@ -40,6 +40,10 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="com.pasha.profile.internal.data.UploadService"
+            android:exported="false" />
+
 
         <service
             android:name="com.pasha.core.account.AuthenticatorService"

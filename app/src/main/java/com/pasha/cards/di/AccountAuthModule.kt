@@ -10,13 +10,6 @@ import dagger.Provides
 
 @Module
 interface AccountAuthModule {
-    companion object {
-        @Provides
-        fun provideSessionService(networkProvider: AuthNetworkProvider): SessionService {
-            return networkProvider.retrofitBuilder.build().create(SessionService::class.java)
-        }
-    }
-
     @Binds
     fun bindAccountDeps(impl: CardsApplicationComponent): AccountDeps
 }

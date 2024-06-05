@@ -12,6 +12,7 @@ import com.pasha.core.di.DependeciesKey
 import com.pasha.core.di.Dependencies
 import com.pasha.core.di.DepsMap
 import com.pasha.core.network.api.SessionService
+import com.pasha.profile.api.ProfileDeps
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
@@ -26,8 +27,15 @@ import javax.inject.Singleton
 annotation class AppScope
 
 
-@[AppScope Component(modules = [AuthFeatureModule::class, AccountAuthModule::class])]
-interface CardsApplicationComponent : AuthDeps, AccountDeps {
+@[AppScope Component(
+    modules = [
+        AuthFeatureModule::class,
+        AccountAuthModule::class,
+        CardsApplicationModule::class,
+        ProfileFutureModule::class
+    ]
+)]
+interface CardsApplicationComponent : AuthDeps, AccountDeps, ProfileDeps {
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance context: Context): CardsApplicationComponent

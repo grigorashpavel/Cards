@@ -1,7 +1,5 @@
 package com.pasha.auth.api
 
-import android.accounts.Account
-import android.accounts.AccountManager
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +12,6 @@ import com.pasha.auth.R
 import com.pasha.auth.databinding.FragmentSignInBinding
 import com.pasha.auth.internal.di.DaggerAuthComponent
 import com.pasha.auth.internal.presentation.AuthViewModel
-import com.pasha.core.account.Authenticator
 import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.di.findDependencies
 import com.pasha.core.progress_indicator.api.ProgressIndicator
@@ -111,7 +108,11 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
         binding.btnSkip.setOnClickListener {
-            findNavController().navigate(navigationProvider.toAllCards.action)
+            findNavController().navigate(
+                navigationProvider.toAllCards.action,
+                null,
+                navigationProvider.toAllCards.navOptions
+            )
         }
 
 
@@ -127,7 +128,7 @@ class SignInFragment : Fragment() {
         }
 
         val progressIndicator = ProgressIndicator().apply {
-            setCallback(viewModel::cancelLastTask)
+            setCancelCallback(viewModel::cancelLastTask)
         }
 
         binding.btnLogin.setOnClickListener {

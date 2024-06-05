@@ -5,7 +5,7 @@ import com.pasha.auth.internal.domain.models.Credentials
 import com.pasha.auth.internal.domain.models.Tokens
 import com.pasha.auth.internal.domain.repositories.AuthRepository
 import com.pasha.core.network.api.utils.Response
-import com.pasha.core.network.api.utils.requestTokensFlow
+import com.pasha.core.network.api.utils.requestFlow
 import com.pasha.core.network.api.models.CredentialsDto
 import com.pasha.core.network.api.models.TokensDto
 import com.pasha.core.store.api.IdentificationManager
@@ -24,7 +24,7 @@ internal class AuthRepositoryRetrofitImpl @Inject constructor(
             password = credentials.password
         )
 
-        return requestTokensFlow {
+        return requestFlow {
             authApi.signIn(credentialsDto)
         }.asTokensFlow()
     }
@@ -36,7 +36,7 @@ internal class AuthRepositoryRetrofitImpl @Inject constructor(
             password = credentials.password
         )
 
-        return requestTokensFlow {
+        return requestFlow {
             authApi.signUp(credentialsDto)
         }.asTokensFlow()
     }

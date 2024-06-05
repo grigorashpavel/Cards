@@ -1,16 +1,11 @@
 package com.pasha.core.network.api.utils
 
 import android.util.Log
-import com.google.gson.Gson
-import com.pasha.core.network.api.models.ErrorResponseDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
-import okhttp3.Connection
-import retrofit2.Call
 import retrofit2.HttpException
 import java.net.ConnectException
 
@@ -24,7 +19,7 @@ private class NullResponseBodyException(
     cause: Throwable? = null
 ) : RuntimeException(message, cause)
 
-fun <T> requestTokensFlow(call: suspend () -> retrofit2.Response<T>): Flow<Response<T>> = flow {
+fun <T> requestFlow(call: suspend () -> retrofit2.Response<T>): Flow<Response<T>> = flow {
     emit(Response.Loading)
 
     Log.d(REQUEST_FLOW_TAG, "fun <T> requestTokensFlow() Thread: ${Thread.currentThread().name}")
@@ -66,8 +61,8 @@ fun <T> requestTokensFlow(call: suspend () -> retrofit2.Response<T>): Flow<Respo
         } catch (eConnection: ConnectException) {
             emit(
                 Response.Error(
-                    code = 0,
-                    errorMessage = "Bad connection or Server don`t work!"
+                    code = 408,
+                    errorMessage = "Server don`t work!"
                 )
             )
         }
