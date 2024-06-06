@@ -63,7 +63,6 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-
     // REST = Retrofit2 + Gson
     implementation(libs.retrofit2.retrofit)
     implementation(libs.retrofit2.converter.gson)

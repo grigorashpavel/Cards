@@ -12,6 +12,7 @@ import dagger.multibindings.IntoMap
 interface ProfileFutureModule {
     @Binds
     fun bindProfileDepsToAppContext(impl: CardsApplicationComponent): ProfileDeps
+    
 
     @Binds
     @IntoMap

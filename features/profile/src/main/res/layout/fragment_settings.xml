@@ -149,9 +149,9 @@
                 app:layout_constraintEnd_toEndOf="@id/containerTheme"
                 app:layout_constraintTop_toTopOf="@id/containerTheme"
                 app:thumbIcon="@drawable/ic_dark_mode_24"
-                app:thumbIconTint="@color/primary_900" />
+                app:thumbIconTint="@color/primary_400" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <!--com.google.android.material.textview.MaterialTextView
                 android:id="@+id/languageTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 app:layout_constraintStart_toStartOf="@id/settingsTitle"
                 app:layout_constraintTop_toBottomOf="@id/containerTheme" />
 
-            <!--com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/languageLayout"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="0dp"

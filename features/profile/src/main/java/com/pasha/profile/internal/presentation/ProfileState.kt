@@ -1,5 +1,6 @@
 package com.pasha.profile.internal.presentation
 
+import android.net.Uri
 import java.lang.Error
 
 data class ProfileState(
@@ -8,5 +9,7 @@ data class ProfileState(
     val headerPath: String = "",
     val avatarPath: String = "",
     val isLoading: Boolean = false,
+    val imageUri: Uri? = null,
+    val isAction: Boolean = false,
     val errorMessage: String? = null
 )

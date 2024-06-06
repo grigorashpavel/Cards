@@ -35,16 +35,22 @@ class SettingsFragment : Fragment() {
 
         val preferences = PreferencesManager(requireActivity().applicationContext)
         binding.switchTheme.isChecked = preferences.isDarkTheme
+        setSwitchUi(isChecked = preferences.isDarkTheme)
 
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            binding.switchTheme.thumbIconDrawable = if (isChecked) {
-                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_dark_mode_24)
-            } else {
-                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_light_mode_24)
-            }
+            setSwitchUi(isChecked)
 
             preferences.setThemeType(isDark = isChecked)
             AppCompatDelegate.setDefaultNightMode(preferences.themeCode)
+        }
+    }
+
+
+    private fun setSwitchUi(isChecked: Boolean) {
+        binding.switchTheme.thumbIconDrawable = if (isChecked) {
+            AppCompatResources.getDrawable(requireContext(), R.drawable.ic_dark_mode_24)
+        } else {
+            AppCompatResources.getDrawable(requireContext(), R.drawable.ic_light_mode_24)
         }
     }
 

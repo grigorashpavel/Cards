@@ -12,22 +12,21 @@ class FileLoader @Inject constructor(
     private val context: Context
 ) {
     suspend fun loadFile(uri: Uri?): File? = withContext(Dispatchers.IO) {
-        if (uri == null) return@withContext null
+        if (uri != null && uri != Uri.parse("null")) {
+            val file = File(context.cacheDir, "temp_file")
+            val inputStream = context.contentResolver.openInputStream(uri)
+            try {
+                inputStream.use { input ->
+                    FileOutputStream(file).use { output ->
+                        input?.copyTo(output)
+                    }
 
-        val file = File(context.cacheDir, "temp_file")
-        val inputStream = context.contentResolver.openInputStream(uri)
-        try {
-            inputStream.use { input ->
-                FileOutputStream(file).use { output ->
-                    input?.copyTo(output)
+                    return@withContext file
                 }
-
-                return@withContext file
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
-
         return@withContext null
     }
 }

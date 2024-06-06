@@ -65,6 +65,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.fragment)
 
+    // Swiperefresh Layout
+    implementation(libs.androidx.swiperefreshlayout.swiperefreshlayout)
+
     implementation(libs.androidx.preferences.preferences.ktx)
 
     testImplementation(libs.junit)

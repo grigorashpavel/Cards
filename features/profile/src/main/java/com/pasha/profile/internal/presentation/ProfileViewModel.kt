@@ -1,5 +1,6 @@
 package com.pasha.profile.internal.presentation
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
@@ -28,7 +29,7 @@ import kotlin.coroutines.coroutineContext
 
 private const val VM_TAG = "ProfileViewModel"
 
-class ProfileViewModel(
+internal class ProfileViewModel(
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
@@ -39,6 +40,10 @@ class ProfileViewModel(
     private val _profileStateHolder by lazy { MutableLiveData(ProfileState()) }
     val profileStateHolder: LiveData<ProfileState> get() = _profileStateHolder
 
+    var editableState = EditableState()
+        private set
+
+
     private var lastTask: Job? = null
 
     fun cancelTask() {
@@ -46,6 +51,23 @@ class ProfileViewModel(
         lastTask = null
 
         _profileStateHolder.value = _profileStateHolder.value?.copy(isLoading = false)
+    }
+
+    fun saveImageUri(uri: Uri?) {
+        _profileStateHolder.value = _profileStateHolder.value?.copy(imageUri = uri)
+    }
+
+    fun startActionMode() {
+        _profileStateHolder.value = _profileStateHolder.value?.copy(isAction = true)
+    }
+
+    fun setEditableData(uri: Uri? = null, username: String? = null) {
+        if (uri != null) editableState = editableState.copy(imageUri = uri)
+        if (username != null) editableState = editableState.copy(username = username)
+    }
+
+    fun stopActionMode() {
+        _profileStateHolder.value = _profileStateHolder.value?.copy(isAction = false)
     }
 
     fun fetchProfile() {

@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/correct"
+        android:visible="false"
+        android:iconTint="@color/primary_900"
+        android:icon="@drawable/ic_correct_24"
+        android:title="@string/edit_profile"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/edit"
         android:iconTint="@color/primary_900"
         android:icon="@drawable/ic_edit_profile_24"
