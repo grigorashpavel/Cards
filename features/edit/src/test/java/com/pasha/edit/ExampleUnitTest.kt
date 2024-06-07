@@ -1,4 +1,4 @@
-package com.pasha.card
+package com.pasha.edit
 
 import org.junit.Test
 

@@ -23,7 +23,7 @@ rootProject.name = "Cards"
 include(":app")
 include(":core-ui")
 include(":features:all-cards")
-include(":features:card")
+include(":features:edit")
 include(":features:auth")
 include(":features:profile")
 include(":core")

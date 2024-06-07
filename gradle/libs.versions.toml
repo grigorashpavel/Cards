@@ -23,6 +23,7 @@ okhttp = "4.9.1"
 preferences = "1.2.0"
 picasso = "2.8"
 swiperefresh = "1.1.0"
+vcard = "0.12.1"
 
 
 [libraries]
@@ -66,6 +67,7 @@ androidx-preferences-preferences-ktx = { group = "androidx.preference", name = "
 
 androidx-swiperefreshlayout-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefresh" }
 
+googlecode-ezvcard-ezvcard = { group = "com.googlecode.ez-vcard", name = "ez-vcard", version.ref = "vcard" }
 
 [plugins]
 navigationSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation_version" }

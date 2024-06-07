@@ -46,7 +46,7 @@ dependencies {
     implementation(libs.dagger)
     ksp(libs.dagger.compiler)
 
-    // REST = Retrofit2 + Gson
+    // REST = Retrofit2 + Gson + OkHttp
     implementation(libs.retrofit2.retrofit)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.okhttp3.okhttp)

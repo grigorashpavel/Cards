@@ -3,18 +3,18 @@
     <item
         android:id="@+id/all_cards"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_cards_24"
         android:title="Cards" />
     <item
-        android:id="@+id/cloud"
+        android:id="@+id/edit"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Cloud" />
+        android:icon="@drawable/ic_edit_24"
+        android:title="Create" />
 
     <item
         android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_profile_24"
         android:title="Profile" />
 
 </menu>

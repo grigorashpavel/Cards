@@ -5,9 +5,8 @@
     android:id="@+id/features_graph"
     app:startDestination="@+id/all_cards">
 
-    <fragment android:id="@+id/bottomNavigationStack" />
-
     <include app:graph="@navigation/all_cards_graph" />
     <include app:graph="@navigation/auth_graph" />
     <include app:graph="@navigation/profile_graph" />
+    <include app:graph="@navigation/edit_graph" />
 </navigation>

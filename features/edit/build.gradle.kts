@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.androidKsp)
 }
 
 android {
-    namespace = "com.pasha.card"
+    namespace = "com.pasha.edit"
     compileSdk = 34
 
     defaultConfig {
@@ -12,6 +13,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
@@ -37,7 +42,21 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
 
+    // Dagger = Major + Compiler
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
+    // REST = Retrofit2 + Gson
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3.okhttp)
+
+    // Ez - vCard
+    implementation(libs.googlecode.ezvcard.ezvcard)
+
+
     implementation(project(":core-ui"))
+    implementation(project(":core"))
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

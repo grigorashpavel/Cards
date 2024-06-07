@@ -43,6 +43,7 @@ android {
 dependencies {
     // Features
     implementation(project(":features:all-cards"))
+    implementation(project(":features:edit"))
     implementation(project(":features:auth"))
     implementation(project(":features:profile"))
     implementation(project(":core"))
