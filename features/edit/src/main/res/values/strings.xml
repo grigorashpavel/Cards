@@ -1,3 +1,10 @@
 <resources>
 
+    <string name="create_your_own_card">Create your own Card</string>
+    <string name="family">Family</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="cards_content">Cards Content</string>
+    <string name="upload_created_card">Upload Created Card</string>
 </resources>

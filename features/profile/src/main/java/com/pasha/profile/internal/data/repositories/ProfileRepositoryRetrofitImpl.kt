@@ -41,8 +41,6 @@ class ProfileRepositoryRetrofitImpl @Inject constructor(
                 MultipartBody.Part.createFormData("avatar", file.name, body)
             }
 
-            //if (file?.exists() == true) file.delete()
-
             profileApi.updateProfile(usernameRequestBody, avatarParts)
         }
     }

@@ -4,17 +4,17 @@
         android:id="@+id/all_cards"
         android:enabled="true"
         android:icon="@drawable/ic_cards_24"
-        android:title="Cards" />
+        android:title="@string/cards" />
     <item
         android:id="@+id/edit"
         android:enabled="true"
         android:icon="@drawable/ic_edit_24"
-        android:title="Create" />
+        android:title="@string/create" />
 
     <item
         android:id="@+id/profile"
         android:enabled="true"
         android:icon="@drawable/ic_profile_24"
-        android:title="Profile" />
+        android:title="@string/profile" />
 
 </menu>

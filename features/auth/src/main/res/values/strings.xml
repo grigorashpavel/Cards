@@ -27,4 +27,9 @@
         you read our
         <b><a href="https://www.yandex.ru/">Privacy Policy</a></b>
     </string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="or_better_yet">Or better yet…</string>
+    <string name="continue_with_yandex_id">Continue with Yandex ID</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="btn_login">Login</string>
 </resources>

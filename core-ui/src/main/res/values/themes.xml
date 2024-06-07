@@ -1,18 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.Cards" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_600</item>
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/primary_500</item>
         <item name="colorPrimaryVariant">@color/primary_700</item>
-        <item name="colorOnPrimary">@color/primary_100</item>
-        <item name="colorSurfaceContainerHigh">@color/primary_500</item>
-        <item name="colorOnSurfaceVariant">@color/primary_500</item>
-        <!-- Secondary brand color. -->
+        <item name="colorOnPrimary">@color/primary_0</item>
+
+        <!-- Secondary colors -->
         <item name="colorSecondary">@color/primary_200</item>
-        <item name="colorSecondaryVariant">@color/primary_700</item>
-        <item name="colorOnSecondary">@color/primary_0</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/primary_900</item>
-        <!-- Customize your theme here. -->
+        <item name="colorSecondaryVariant">@color/primary_300</item>
+        <item name="colorOnSecondary">@color/primary_900</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/primary_50</item>
+        <item name="colorOnBackground">@color/primary_900</item>
+
+        <!-- Surface colors -->
+        <item name="colorSurface">@color/primary_100</item>
+        <item name="colorOnSurface">@color/primary_900</item>
     </style>
 </resources>
