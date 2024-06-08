@@ -107,13 +107,13 @@ class SignInFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
-        binding.btnSkip.setOnClickListener {
-            findNavController().navigate(
-                navigationProvider.toAllCards.action,
-                null,
-                navigationProvider.toAllCards.navOptions
-            )
-        }
+//        binding.btnSkip.setOnClickListener {
+//            findNavController().navigate(
+//                navigationProvider.toAllCards.action,
+//                null,
+//                navigationProvider.toAllCards.navOptions
+//            )
+//        }
 
 
         viewModel.authStateHolder.observe(viewLifecycleOwner) { state ->

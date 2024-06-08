@@ -7,4 +7,6 @@ interface ActivityUiDeps {
     fun isOpenedByAuthenticatorToCreateAccount(): Boolean
     fun hideBottomNavigationView()
     fun showBottomNavigationView()
+    fun checkForAuthNavigation(errorCode: Int)
+    fun checkForAuthNavigation(errorCode: String)
 }

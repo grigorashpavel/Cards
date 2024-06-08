@@ -1,9 +1,13 @@
 package com.pasha.profile.internal.di
 
 import android.content.Context
+import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.di.SessionNetworkProvider
 import com.pasha.core.network.api.QueryAuthenticator
+import com.pasha.core.network.api.utils.QueryInterceptor
 import com.pasha.core.store.api.FileLoader
+import com.pasha.core.store.api.IdentificationManager
+import com.pasha.core.store.internal.IdentificationManagerImpl
 import com.pasha.profile.internal.data.ProfileApi
 import com.pasha.profile.internal.data.repositories.ProfileRepositoryRetrofitImpl
 import com.pasha.profile.internal.domain.repositories.ProfileRepository
@@ -29,15 +33,19 @@ interface InternalProfileModule {
         }
 
         @Provides
-        fun provideAuthPicasso(authenticator: QueryAuthenticator, context: Context): Picasso {
+        fun provideAuthPicasso(interceptor: QueryInterceptor, context: Context): Picasso {
             val okClient = OkHttpClient.Builder()
-                .authenticator(authenticator)
+                .addInterceptor(interceptor)
                 .build()
 
             return Picasso.Builder(context)
                 .downloader(OkHttp3Downloader(okClient))
                 .build()
         }
+
+        @Provides
+        fun provideAccountManager(context: Context): CardsAccountManager =
+            CardsAccountManager(context)
     }
 
     @Binds

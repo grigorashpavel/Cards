@@ -135,7 +135,9 @@ class ProfileFragment : Fragment() {
             }
 
             if (state.errorMessage != null) {
-                (requireActivity() as ActivityUiDeps).showErrorMessage(state.errorMessage)
+                val uiDeps = (requireActivity() as ActivityUiDeps)
+                uiDeps.checkForAuthNavigation(state.errorMessage)
+                uiDeps.showErrorMessage(state.errorMessage)
             } else if (state.email.isNotEmpty() || state.username.isNotEmpty()) {
                 binding.groupProfileContent.visibility = View.VISIBLE
                 setCorrectState(state)

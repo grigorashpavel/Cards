@@ -1,28 +1,20 @@
 package com.pasha.profile.internal.presentation
 
 import android.net.Uri
-import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.CreationExtras
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.savedstate.SavedStateRegistryOwner
 import com.pasha.core.network.api.utils.Response
 import com.pasha.profile.internal.domain.repositories.ProfileRepository
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
+import com.pasha.profile.internal.domain.repositories.models.Device
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.coroutineContext
 
@@ -45,6 +37,18 @@ internal class ProfileViewModel(
 
 
     private var lastTask: Job? = null
+
+    var isShowSessions: MutableLiveData<Boolean> = MutableLiveData(false)
+        private set
+
+    private val _devices: MutableLiveData<List<Device>?> = MutableLiveData(null)
+
+    val devices get(): LiveData<List<Device>?> = _devices
+
+
+    fun switchSessionsState() {
+        isShowSessions.value = isShowSessions.value?.not()
+    }
 
     fun cancelTask() {
         lastTask?.cancel()
@@ -105,6 +109,39 @@ internal class ProfileViewModel(
             }
 
         }.launchIn(viewModelScope)
+    }
+
+    fun getActiveDevices() {
+        lastTask = profileRepository.getActiveSessions().onEach { response ->
+            if (coroutineContext.isActive.not()) return@onEach
+            when (response) {
+                is Response.Loading -> {
+
+                }
+
+                is Response.Error -> {
+
+                }
+
+                is Response.Success -> {
+                    Log.d(VM_TAG, response.data.toString())
+                    _devices.value = response.data
+                }
+            }
+
+        }.launchIn(viewModelScope)
+    }
+
+    fun killCurrentSession() {
+        viewModelScope.launch {
+            profileRepository.killCurrentSession()
+        }
+    }
+
+    fun killOtherSessions() {
+        viewModelScope.launch {
+            profileRepository.killOtherSessions()
+        }
     }
 
     class Factory @Inject constructor(

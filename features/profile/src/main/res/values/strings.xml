@@ -10,4 +10,6 @@
     <string name="security">Security</string>
     <string name="devices">Devices</string>
     <string name="theme">Theme</string>
+    <string name="kill_current">Kill current</string>
+    <string name="kill_others">Kill others</string>
 </resources>

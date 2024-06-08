@@ -8,6 +8,7 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -134,5 +135,30 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
 
     override fun showBottomNavigationView() {
         binding.bottomNavigationView.visibility = View.VISIBLE
+    }
+
+    override fun checkForAuthNavigation(errorCode: Int) {
+        if (errorCode == 401) {
+            exitToAuth()
+        }
+    }
+
+    override fun checkForAuthNavigation(errorCode: String) {
+        if (errorCode == "401") {
+            exitToAuth()
+        }
+
+        val hasUnauthorizedAsErrorMsg = errorCode.contains("401")
+        if (hasUnauthorizedAsErrorMsg) {
+            exitToAuth()
+        }
+    }
+
+    private fun exitToAuth() {
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.auth, true)
+            .build()
+
+        navController.navigate(R.id.auth, null, navOptions = navOptions)
     }
 }

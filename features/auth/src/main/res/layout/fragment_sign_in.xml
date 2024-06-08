@@ -118,7 +118,7 @@
         app:layout_constraintStart_toStartOf="@id/passwordFieldLayout"
         app:layout_constraintTop_toBottomOf="@id/passwordFieldLayout" />
 
-    <com.google.android.material.button.MaterialButton
+    <!--com.google.android.material.button.MaterialButton
         android:id="@+id/btnForgotPassword"
         style="@style/Widget.Pasha.Button.TextButton"
         android:layout_width="wrap_content"
@@ -129,9 +129,9 @@
         app:layout_constraintEnd_toStartOf="@id/btnSkip"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" /-->
 
-    <com.google.android.material.button.MaterialButton
+    <!--com.google.android.material.button.MaterialButton
         android:id="@+id/btnSkip"
         style="@style/Widget.Pasha.Button.TextButton"
         android:layout_width="wrap_content"
@@ -140,7 +140,7 @@
         android:textAppearance="@style/TextAppearance.Pasha.LinkMedium"
         app:layout_constraintEnd_toEndOf="@id/btnLogin"
         app:layout_constraintStart_toEndOf="@id/btnForgotPassword"
-        app:layout_constraintTop_toTopOf="@id/btnForgotPassword" />
+        app:layout_constraintTop_toTopOf="@id/btnForgotPassword" /-->
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvBodySignUp"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDeviceName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/low_margin"
+        android:layout_marginTop="@dimen/low_margin"
+        android:text="SDLFKDJLFDSJFJSDKL"
+        android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Bold"
+        android:textColor="@color/primary_900"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDeviceId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/low_margin"
+        android:text="FJLKSDF:DSLFLSDJFSDLF"
+        android:textAppearance="@style/TextAppearance.Pasha.BodySmall.Regular"
+        android:textColor="@color/primary_600"
+        app:layout_constraintEnd_toEndOf="@id/tvDeviceName"
+        app:layout_constraintStart_toStartOf="@id/tvDeviceName"
+        app:layout_constraintTop_toBottomOf="@id/tvDeviceName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ private const val AUTH_TAG = "Authenticator"
 class Authenticator @AssistedInject constructor(
     @Assisted("context") private val context: Context,
     private val sessionService: SessionService,
-    private val identificationManager: IdentificationManager
+    private val identificationManager: IdentificationManager,
 ) : AbstractAccountAuthenticator(context) {
 
     @AssistedFactory
@@ -82,7 +82,8 @@ class Authenticator @AssistedInject constructor(
             val credentialsDto = CredentialsDto(
                 email = account!!.name,
                 password = "",
-                deviceId = identificationManager.getAndroidId()
+                deviceId = identificationManager.getAndroidId(),
+                deviceName = identificationManager.getDeviceName()
             )
 
             Log.d(AUTH_TAG, "Authenticator try to block thread for async call")
@@ -115,6 +116,7 @@ class Authenticator @AssistedInject constructor(
 
                             if (response.code == 401) {
                                 manager.invalidateTokens(refreshToken)
+                                manager.exitFromAccount()
                             }
                         }
                     }

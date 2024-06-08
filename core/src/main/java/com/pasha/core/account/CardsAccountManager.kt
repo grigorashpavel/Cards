@@ -182,7 +182,9 @@ class CardsAccountManager(context: Context) {
      * @return Access Token или null
      * @see[Authenticator]
      */
-    suspend fun getAuthTokenAsync(account: Account): String? {
+    suspend fun getAuthTokenAsync(account: Account?): String? {
+        if (account == null) return null
+
         val future = manager.getAuthToken(
             account,
             Authenticator.KEY_ACCESS_TOKEN,
@@ -205,7 +207,8 @@ class CardsAccountManager(context: Context) {
      *
      */
     fun getAuthTokenSync(account: Account?, tokenType: String?): String? {
-        return manager.peekAuthToken(account, tokenType)
+        return if (account == null) null
+        else manager.peekAuthToken(account, tokenType)
     }
 
     /**
@@ -244,7 +247,7 @@ class CardsAccountManager(context: Context) {
                     //invalidateTokens(accessToken)
                 } else if (errorCode != null) {
 
-                    if (errorCode == "401") {
+                    if (errorCode == UNAUTHORIZED_CODE) {
                         authNavigationCallback?.invoke()
                         exitFromAccount()
                     }
@@ -262,6 +265,8 @@ class CardsAccountManager(context: Context) {
     }
 
     companion object {
+        private const val UNAUTHORIZED_CODE = "401"
+
         const val IS_ACTIVE_ACCOUNT = "is_active"
         const val IS_SAVED_ACCOUNT = "is_saved"
         const val ACCOUNT_TYPE = "com.pasha.cards"

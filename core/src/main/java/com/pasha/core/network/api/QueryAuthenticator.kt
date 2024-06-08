@@ -23,7 +23,7 @@ class QueryAuthenticator @Inject constructor(
         accountManager.invalidateTokens(expiredAccessToken)
 
         val accessToken = runBlocking {
-            accountManager.getAuthTokenAsync(accountManager.activeAccount!!)
+            accountManager.getAuthTokenAsync(accountManager.activeAccount)
         }
         if (accessToken == null) return null
 

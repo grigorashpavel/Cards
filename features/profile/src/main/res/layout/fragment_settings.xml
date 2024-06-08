@@ -86,16 +86,54 @@
                 app:layout_constraintTop_toBottomOf="@id/securityTitle"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKillCurrentSession"
+                android:visibility="gone"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/low_margin"
+                android:backgroundTint="@color/primary_200"
+                android:gravity="start"
+                android:paddingVertical="@dimen/normal_margin"
+                android:text="@string/kill_current"
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                android:textColor="@color/primary_900"
+                app:layout_constraintStart_toStartOf="@id/securityTitle"
+                app:layout_constraintTop_toBottomOf="@id/btnDevices"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKillOtherSessions"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/low_margin"
+                android:backgroundTint="@color/primary_200"
+                android:gravity="start"
+                android:paddingVertical="@dimen/normal_margin"
+                android:text="@string/kill_others"
+                android:textAppearance="@style/TextAppearance.Pasha.BodyLarge.Regular"
+                android:textColor="@color/primary_900"
+                app:layout_constraintEnd_toEndOf="@id/btnDevices"
+                app:layout_constraintTop_toBottomOf="@id/btnDevices"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDevices"
                 android:layout_width="0dp"
+                android:maxHeight="@dimen/large_margin"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/normal_margin"
                 android:visibility="gone"
+                android:layout_marginTop="@dimen/low_margin"
                 app:layout_constraintEnd_toEndOf="@id/btnDevices"
                 app:layout_constraintStart_toStartOf="@id/btnDevices"
-                app:layout_constraintTop_toBottomOf="@id/btnDevices" />
+                app:layout_constraintTop_toBottomOf="@id/btnKillCurrentSession" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/themeTitle"

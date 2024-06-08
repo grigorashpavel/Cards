@@ -20,6 +20,7 @@ internal class AuthRepositoryRetrofitImpl @Inject constructor(
     override fun signIn(credentials: Credentials): Flow<Response<Tokens>> {
         val credentialsDto = CredentialsDto(
             deviceId = identificationManager.getAndroidId(),
+            deviceName = identificationManager.getDeviceName(),
             email = credentials.email,
             password = credentials.password
         )
@@ -32,6 +33,7 @@ internal class AuthRepositoryRetrofitImpl @Inject constructor(
     override fun signUp(credentials: Credentials): Flow<Response<Tokens>> {
         val credentialsDto = CredentialsDto(
             deviceId = identificationManager.getAndroidId(),
+            deviceName = identificationManager.getDeviceName(),
             email = credentials.email,
             password = credentials.password
         )
