@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    app:cardCornerRadius="0dp"
+    app:rippleColor="?attr/colorControlHighlight">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCardItem"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:background="@color/primary_300"
+            android:src="@drawable/ic_empty_resource_image_20"
+            android:tint="@color/primary_400"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCardName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:hint="@string/card_name"
+            android:textAppearance="@style/TextAppearance.Pasha.TitleLarge"
+            android:textColor="@color/primary_900"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCardItem" />
+
+        <TextView
+            android:id="@+id/tvCreateDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/low_margin"
+            android:hint="@string/date_created"
+            android:textAppearance="@style/TextAppearance.Pasha.BodySmall.SemiBold"
+            android:textColor="@color/primary_900"
+            app:layout_constraintEnd_toEndOf="@id/tvCardName"
+            app:layout_constraintStart_toStartOf="@id/tvCardName"
+            app:layout_constraintTop_toBottomOf="@id/tvCardName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

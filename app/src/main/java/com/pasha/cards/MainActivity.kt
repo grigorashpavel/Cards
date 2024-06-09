@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private lateinit var navCallBack: OnBackPressedCallback
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(ACTIVITY_TAG, "fun onCreate()")
@@ -61,7 +63,7 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
                     navigateToAuth()
                 },
                 showErrorMassageCallback = {
-                    showMessage( message = it)
+                    showMessage(message = it)
                 }
             )
 
@@ -80,7 +82,7 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
     }
 
     private fun setupCustomBackPressNavigation() {
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+        navCallBack = object : OnBackPressedCallback(true) {
             @SuppressLint("RestrictedApi")
             override fun handleOnBackPressed() {
                 val timeToAuth = navController.currentDestination?.label == AUTH_DEST_LABEL
@@ -90,7 +92,9 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
                 if (canNavigateUp) return else finish()
             }
 
-        })
+        }
+
+        onBackPressedDispatcher.addCallback(this, navCallBack)
     }
 
     private fun List<Account>.pickAccount(callback: (Int) -> Unit) {
@@ -155,6 +159,10 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
         if (hasUnauthorizedAsErrorMsg) {
             exitToAuth()
         }
+    }
+
+    override fun switchBackPressedNavigationMode() {
+        navCallBack.isEnabled = navCallBack.isEnabled.not()
     }
 
     private fun exitToAuth() {

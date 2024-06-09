@@ -70,7 +70,7 @@ androidx-swiperefreshlayout-swiperefreshlayout = { group = "androidx.swiperefres
 googlecode-ezvcard-ezvcard = { group = "com.googlecode.ez-vcard", name = "ez-vcard", version.ref = "vcard" }
 
 [plugins]
-navigationSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation_version" }
+safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation_version" }
 dagger = { id = "com.google.dagger", version.ref = "dagger" }
 androidKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }

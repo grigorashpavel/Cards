@@ -1,4 +1,13 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="card_name">Card Name</string>
+    <string name="date_created">Date created</string>
+    <string name="your_cards">Your Cards</string>
+    <string name="find_your_cards">Find your cards</string>
+    <string name="date">Date</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="family">Family</string>
 </resources>

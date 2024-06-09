@@ -15,6 +15,7 @@ interface EditApi {
     @POST("upload")
     suspend fun uploadVisitCard(
         @Part("card_name") cardName: RequestBody?,
+        @Part("create_time") creationTime: RequestBody?,
         @Part card: MultipartBody.Part?
     ): Response<Unit>
 }

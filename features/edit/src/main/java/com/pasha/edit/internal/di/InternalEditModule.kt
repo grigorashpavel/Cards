@@ -6,7 +6,6 @@ import com.pasha.core.di.SessionNetworkProvider
 import com.pasha.edit.internal.data.EditApi
 import com.pasha.edit.internal.data.repositories.EditRepositoryRetrofitImpl
 import com.pasha.edit.internal.domain.repositories.EditRepository
-import com.pasha.profile.internal.data.ProfileApi
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

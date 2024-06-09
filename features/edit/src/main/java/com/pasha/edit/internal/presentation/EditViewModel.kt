@@ -69,8 +69,8 @@ class EditViewModel(
         }
     }
 
-    fun uploadVCard(cardName: String) {
-        lastTask = editRepository.uploadCard(cardName, vcard).onEach { response ->
+    fun uploadVCard(cardName: String, currentTime: Long) {
+        lastTask = editRepository.uploadCard(cardName, vcard, currentTime).onEach { response ->
             if (coroutineContext.isActive.not()) return@onEach
 
             when (response) {

@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/allCardsFragment"
-        android:name="com.pasha.all_cards.AllCardsFragment"
+        android:name="com.pasha.all_cards.api.AllCardsFragment"
         android:label="fragment_all_cards"
-        tools:layout="@layout/fragment_all_cards" />
+        tools:layout="@layout/fragment_all_cards">
+        <action
+            android:id="@+id/action_allCardsFragment_to_viewerFragment"
+            app:destination="@id/viewerFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/viewerFragment"
+        android:name="com.pasha.all_cards.internal.presentation.ViewerFragment"
+        android:label="fragment_viewer"
+        tools:layout="@layout/fragment_viewer"></fragment>
 </navigation>

@@ -5,32 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_300"
-    tools:context=".AllCardsFragment">
+    tools:context=".api.AllCardsFragment">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/pasha_top_rounded_background"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="ENENENE"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -50,22 +26,72 @@
                 style="@style/Widget.Pasha.SearchBar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/m3_searchbar_height"
-                android:hint="Find your cards"
+                android:hint="@string/find_your_cards"
                 app:layout_collapseMode="pin" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPostCards"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_gravity="bottom"
                 android:minHeight="160dp"
-                android:orientation="horizontal"
-                tools:itemCount="1"
-                tools:listitem="@layout/card_folder_type1_item" />
+                android:orientation="horizontal" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pasha_top_rounded_background"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="14dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCardsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:gravity="center"
+                android:text="@string/your_cards"
+                android:textAppearance="@style/TextAppearance.Pasha.DisplayLarge"
+                android:textSize="32sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressIndicator" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllCards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/low_margin"
+                android:paddingBottom="@dimen/large_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardsTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.search.SearchView
         android:id="@+id/searchView"
@@ -73,8 +99,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:hint="Find your cards"
+        android:hint="@string/find_your_cards"
         app:layout_anchor="@id/searchBar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
     </com.google.android.material.search.SearchView>
 

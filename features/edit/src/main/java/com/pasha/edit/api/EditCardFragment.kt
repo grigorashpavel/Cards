@@ -116,7 +116,7 @@ class EditCardFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            viewModel.uploadVCard(binding.etCardName.text.toString())
+            viewModel.uploadVCard(binding.etCardName.text.toString(), System.currentTimeMillis())
 
             val handler = Handler(Looper.getMainLooper())
             val taskStateUpdate = Runnable {

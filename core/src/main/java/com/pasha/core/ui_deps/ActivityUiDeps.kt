@@ -9,4 +9,5 @@ interface ActivityUiDeps {
     fun showBottomNavigationView()
     fun checkForAuthNavigation(errorCode: Int)
     fun checkForAuthNavigation(errorCode: String)
+    fun switchBackPressedNavigationMode()
 }

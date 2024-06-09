@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.androidKsp)
 }
 
 android {
@@ -37,6 +38,18 @@ android {
 }
 
 dependencies {
+    // Dagger = Major + Compiler
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
+    // Ez - vCard
+    implementation(libs.googlecode.ezvcard.ezvcard)
+
+    // REST = Retrofit2 + Gson + OkHttp
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3.okhttp)
+
     implementation(project(":core-ui"))
     implementation(project(":core"))
 
@@ -47,6 +60,7 @@ dependencies {
     // Navigation
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

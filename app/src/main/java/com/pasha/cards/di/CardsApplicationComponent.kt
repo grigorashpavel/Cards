@@ -3,6 +3,7 @@ package com.pasha.cards.di
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import com.pasha.all_cards.api.AllCardsDeps
 import com.pasha.auth.api.AuthDeps
 import com.pasha.auth.api.AuthNetworkProvider
 import com.pasha.cards.CardsApplication
@@ -34,10 +35,11 @@ annotation class AppScope
         AccountAuthModule::class,
         CardsApplicationModule::class,
         ProfileFutureModule::class,
-        EditFeatureModule::class
+        EditFeatureModule::class,
+        AllCardsFeatureModule::class
     ]
 )]
-interface CardsApplicationComponent : AuthDeps, AccountDeps, ProfileDeps, EditDeps {
+interface CardsApplicationComponent : AuthDeps, AccountDeps, ProfileDeps, EditDeps, AllCardsDeps {
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance context: Context): CardsApplicationComponent
