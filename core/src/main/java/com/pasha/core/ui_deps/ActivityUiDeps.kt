@@ -2,7 +2,7 @@ package com.pasha.core.ui_deps
 
 
 interface ActivityUiDeps {
-    fun showErrorMessage(message: String)
+    fun showMessage(header: String = "Error", message: String)
     fun offerToAddAccount(callback: () -> Unit)
     fun isOpenedByAuthenticatorToCreateAccount(): Boolean
     fun hideBottomNavigationView()

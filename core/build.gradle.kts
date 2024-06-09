@@ -55,6 +55,9 @@ dependencies {
     implementation(libs.dagger)
     ksp(libs.dagger.compiler)
 
+    // Ez - vCard
+    implementation(libs.googlecode.ezvcard.ezvcard)
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

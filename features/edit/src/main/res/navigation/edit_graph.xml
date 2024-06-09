@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/editCardFragment"
-        android:name="com.pasha.edit.EditCardFragment"
+        android:name="com.pasha.edit.api.EditCardFragment"
         android:label="fragment_card_viewer"
         tools:layout="@layout/fragment_edit_card" />
 </navigation>

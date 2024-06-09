@@ -12,6 +12,7 @@ import com.pasha.core.di.DependeciesKey
 import com.pasha.core.di.Dependencies
 import com.pasha.core.di.DepsMap
 import com.pasha.core.network.api.SessionService
+import com.pasha.edit.api.EditDeps
 import com.pasha.profile.api.ProfileDeps
 import dagger.Binds
 import dagger.BindsInstance
@@ -32,10 +33,11 @@ annotation class AppScope
         AuthFeatureModule::class,
         AccountAuthModule::class,
         CardsApplicationModule::class,
-        ProfileFutureModule::class
+        ProfileFutureModule::class,
+        EditFeatureModule::class
     ]
 )]
-interface CardsApplicationComponent : AuthDeps, AccountDeps, ProfileDeps {
+interface CardsApplicationComponent : AuthDeps, AccountDeps, ProfileDeps, EditDeps {
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance context: Context): CardsApplicationComponent

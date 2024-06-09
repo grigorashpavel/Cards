@@ -44,6 +44,7 @@ dependencies {
 
     // Dagger = Major + Compiler
     implementation(libs.dagger)
+    implementation(project(":features:profile"))
     ksp(libs.dagger.compiler)
 
     // REST = Retrofit2 + Gson

@@ -1,6 +1,5 @@
 package com.pasha.profile.api
 
-import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -21,7 +20,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.pasha.core.di.findDependencies
 import com.pasha.core.network.api.NetworkUtil
@@ -41,7 +39,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.util.Locale.Category
 
 import javax.inject.Inject
 
@@ -137,7 +134,7 @@ class ProfileFragment : Fragment() {
             if (state.errorMessage != null) {
                 val uiDeps = (requireActivity() as ActivityUiDeps)
                 uiDeps.checkForAuthNavigation(state.errorMessage)
-                uiDeps.showErrorMessage(state.errorMessage)
+                uiDeps.showMessage(message =  state.errorMessage)
             } else if (state.email.isNotEmpty() || state.username.isNotEmpty()) {
                 binding.groupProfileContent.visibility = View.VISIBLE
                 setCorrectState(state)

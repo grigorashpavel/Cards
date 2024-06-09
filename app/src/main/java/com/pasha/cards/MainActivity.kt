@@ -18,6 +18,7 @@ import com.pasha.cards.databinding.ActivityMainBinding
 import com.pasha.core.account.CardsAccountManager
 import com.pasha.core.progress_indicator.api.ProgressIndicator
 import com.pasha.core.ui_deps.ActivityUiDeps
+import retrofit2.http.Header
 
 
 private const val ACTIVITY_TAG = "MAIN_ACTIVITY"
@@ -59,7 +60,9 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
                 authNavigationCallback = {
                     navigateToAuth()
                 },
-                showErrorMassageCallback = ::showErrorMessage
+                showErrorMassageCallback = {
+                    showMessage( message = it)
+                }
             )
 
             val activeAccount = manager.activeAccount
@@ -104,12 +107,12 @@ class MainActivity : AppCompatActivity(), ActivityUiDeps {
             .show()
     }
 
-    override fun showErrorMessage(message: String) {
+    override fun showMessage(header: String, message: String) {
         MaterialAlertDialogBuilder(
             this,
             com.pasha.core_ui.R.style.Theme_Pasha_MaterialAlertDialog_Centered
         )
-            .setTitle("Error")
+            .setTitle(header)
             .setMessage(message)
             .setNeutralButton(android.R.string.ok) { _, _ ->
 

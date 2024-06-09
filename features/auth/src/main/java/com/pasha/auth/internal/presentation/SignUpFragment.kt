@@ -96,7 +96,7 @@ internal class SignUpFragment : Fragment() {
                             manager.saveAccount(createdAccount)
                         }
 
-                    } else uiDepsProvider.showErrorMessage("Can`t create Account: $email")
+                    } else uiDepsProvider.showMessage(message =  "Can`t create Account: $email")
 
                 } else if (viewModel.tokens != null) {
                     manager.activateAccount(targetAccount)
@@ -121,7 +121,7 @@ internal class SignUpFragment : Fragment() {
 
         viewModel.errorStateHolder.observe(viewLifecycleOwner) { state ->
             if (state.responseMessage != null) {
-                uiDepsProvider.showErrorMessage(state.responseMessage)
+                uiDepsProvider.showMessage(message = state.responseMessage)
             }
         }
 

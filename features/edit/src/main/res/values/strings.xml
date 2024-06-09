@@ -7,4 +7,5 @@
     <string name="phone">Phone</string>
     <string name="cards_content">Cards Content</string>
     <string name="upload_created_card">Upload Created Card</string>
+    <string name="card_name">Card Name</string>
 </resources>

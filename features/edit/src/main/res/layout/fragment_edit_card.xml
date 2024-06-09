@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_100"
     android:scrollbars="none"
-    tools:context=".EditCardFragment">
+    tools:context=".api.EditCardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
             android:hint="@string/family"
-            app:errorEnabled="false"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEditPageTitle">
@@ -40,7 +40,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etFamily"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/low_margin"
             android:hint="@string/name"
-            app:errorEnabled="false"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/familyLayout">
@@ -59,7 +60,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
             android:hint="@string/email"
-            app:errorEnabled="false"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameLayout">
@@ -78,7 +80,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/low_margin"
             android:hint="@string/phone"
-            app:errorEnabled="false"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emailLayout">
@@ -97,7 +100,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +129,26 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCardName"
+            style="@style/Widget.Pasha.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/low_margin"
+            android:hint="@string/card_name"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvBackground">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCardName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabUpload"
             android:layout_width="wrap_content"
@@ -140,7 +164,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvBackground"
+            app:layout_constraintTop_toBottomOf="@id/layoutCardName"
             app:shapeAppearanceOverlay="@style/Circular" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
